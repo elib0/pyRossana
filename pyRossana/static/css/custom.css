@@ -51,7 +51,7 @@ header h6 ~ p{margin-top:-1.25px}
 }
 *{background:rgba(0,0,0,0.05) url("../img/edit_mixin.png")}
 section{width:auto;max-width:1080px;float:none;display:block;margin-right:auto;margin-left:auto;padding-left:15px;padding-right:15px}
-header{padding:0 1em;height:100px;}
+header{padding:0 1em;height:130px;}
 header > a.logo{float:left;width:22.75%;margin-left:0%;margin-right:3%;height:inherit}
 header > a.logo:last-child{margin-right:0%}
 header > nav{float:left;width:48.5%;margin-left:25.75%;margin-right:3%;height:inherit;}

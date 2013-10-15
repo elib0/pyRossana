@@ -6,7 +6,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
-    url(r'^|home$', 'pyRossana.views.home', name='home'),
+    url(r'^$', 'pyRossana.views.home', name='home'),
     # url(r'^pyRossana/', include('pyRossana.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
