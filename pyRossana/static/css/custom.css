@@ -1,0 +1,68 @@
+body,.cf,.browsehappy p,section,header > a.logo,header > nav,header > nav a,aside,div.content,div.content > article{*zoom:1;}
+body:before,.cf:before,.browsehappy p:before,section:before,header > a.logo:before,header > nav:before,header > nav a:before,aside:before,div.content:before,div.content > article:before,body:after,.cf:after,.browsehappy p:after,section:after,header > a.logo:after,header > nav:after,header > nav a:after,aside:after,div.content:after,div.content > article:after{content:'';display:table}
+body:after,.cf:after,.browsehappy p:after,section:after,header > a.logo:after,header > nav:after,header > nav a:after,aside:after,div.content:after,div.content > article:after{clear:both}
+*,*:before,*:after,*::before,*::after{box-sizing:border-box;*behavior:url("js/vendor/boxsizing.htc");margin:0;padding:0}
+html{overflow-y:scroll;overflow-x:hidden}
+body{width:100%}
+img,video,audio,embed,object,input,iframe{max-width:100%}
+.browsehappy{width:100%;background:#fff;border-bottom:1px solid #ddd;box-shadow:inset 0 -1px 0 #fff;text-shadow:0 1px 0 #fff;}
+.browsehappy p{width:auto;max-width:1410px;float:none;display:block;margin-right:auto;margin-left:auto;padding-left:15px;padding-right:15px;padding:15px 0;margin-top:0;margin-bottom:0;text-align:center;margin-bottom:0;}
+.browsehappy p a{color:#00a6fc}
+html{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-weight:200;color:#444;font-size:16.18px;line-height:24.270000000000003px}
+a{color:#00a6fc;}
+a:hover{color:#0095e3}
+h1,h2,h3,h4,h5,h6,strong,b,dt{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-weight:200;color:#111;letter-spacing:-.015em;}
+h1{font-size:45.304px;line-height:48.540000000000006px;margin-bottom:16.18px}
+h2{font-size:40.45px;line-height:45.304px;margin-bottom:12.944px}
+h3{font-size:35.596000000000004px;line-height:42.068000000000005px;margin-bottom:9.708px}
+h4{font-size:32.36px;line-height:38.832px;margin-bottom:6.472px}
+h5{font-size:25.888px;line-height:35.596000000000004px;margin-bottom:3.236px}
+h6{font-size:21.034000000000002px;line-height:32.36px;margin-bottom:0}
+p,ul,ol,pre,dl{margin-bottom:16.18px}
+ul,ol{padding-left:1.4em}
+li,dd{margin-bottom:8.09px}
+pre{font-size:12.944px}
+header p{color:#aaa}
+header h1 ~ p{margin-top:-8.09px}
+header h2 ~ p{margin-top:-6.472px}
+header h3 ~ p{margin-top:-4.854px}
+header h4 ~ p{margin-top:-3.236px}
+header h5 ~ p{margin-top:-1.618px}
+header h6 ~ p{margin-top:-1.618px}
+code{padding:3px 4px;color:color;background-color:#f5f5f5;border:1px solid #e1e1e8;border-radius:3px;font-family:Menlo,Monaco,monospace}
+pre{display:block;padding:7px;background-color:#f5f5f5;border:1px solid #e1e1e8;border-radius:3px;white-space:pre-wrap;word-break:break-all;font-family:Menlo,Monaco,monospace;line-height:160%}
+@media all and (max-width: 705px) {
+html{font-size:12.5px;line-height:18.75px}
+h1{font-size:35px;line-height:37.5px;margin-bottom:12.5px}
+h2{font-size:31.25px;line-height:35px;margin-bottom:10px}
+h3{font-size:27.5px;line-height:32.5px;margin-bottom:7.5px}
+h4{font-size:23.75px;line-height:30px;margin-bottom:5px}
+h5{font-size:20px;line-height:27.5px;margin-bottom:2.5px}
+h6{font-size:16.25px;line-height:25px;margin-bottom:0}
+p,ul,ol,pre,dl{margin-bottom:12.5px}
+li,dd{margin-bottom:6.25px}
+pre{font-size:10px}
+header h1 ~ p{margin-top:-6.25px}
+header h2 ~ p{margin-top:-5px}
+header h3 ~ p{margin-top:-3.75px}
+header h4 ~ p{margin-top:-2.5px}
+header h5 ~ p{margin-top:-1.25px}
+header h6 ~ p{margin-top:-1.25px}
+}
+*{background:rgba(0,0,0,0.05) url("../img/edit_mixin.png")}
+section{width:auto;max-width:1080px;float:none;display:block;margin-right:auto;margin-left:auto;padding-left:15px;padding-right:15px}
+header{padding:0 1em;height:100px;}
+header > a.logo{float:left;width:22.75%;margin-left:0%;margin-right:3%;height:inherit}
+header > a.logo:last-child{margin-right:0%}
+header > nav{float:left;width:48.5%;margin-left:25.75%;margin-right:3%;height:inherit;}
+header > nav:last-child{margin-right:0%}
+header > nav a{float:left;width:20%;margin-left:0%;margin-right:0%;height:inherit;}
+header > nav a:hover{background-color:#ccc}
+aside{float:left;width:20%;margin-left:0%;margin-right:0%}
+div.content{float:left;width:80%;margin-left:0%;margin-right:0%;}
+div.content > article{float:left;width:29.209621993127143%;margin-left:0%;margin-right:6.185567010309279%;height:20em;overflow:hidden;margin-top:1em;}
+div.content > article:nth-child(3n){margin-right:0%;float:right}
+div.content > article header h1{text-align:center}
+footer{min-height:100px;padding:1em}
+@media all and (max-width: 705px) {
+}

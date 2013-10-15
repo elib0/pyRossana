@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>{% block title %}
+        	Rossana Marketing
+        {% endblock title %}</title>
+        <meta name="viewport" content="width=device-width">
+        {% load staticfiles %}
+        <link rel="stylesheet" href="{% static "css/custom.css" %}">
+        <!--[if lt IE 9]><script src="{% static "js/vendor/selectivizr-1.0.2.min.js" %}"></script><![endif]-->
+        <script src="{% static "js/vendor/selectivizr-1.0.2.min.js" %}"></script>
+    </head>
+    <body>
+        <!--[if lt IE 9]>
+            <div class="browsehappy"><p>You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/" target="_blank">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true" target="_blank">activate Google Chrome Frame</a> to improve your experience.</p></div>
+        <![endif]-->
+        <header>
+    		<a href="#" class="logo">Logo</a>
+    		<nav>
+				<a href="#">Link 1</a>
+				<a href="#">Link 2</a>
+				<a href="#">Link 3</a>
+				<a href="#">Link 4</a>
+				<a href="#">Link 5</a>
+			</nav>
+    	</header>
+        <section>
+	        <div class="content">
+	        	<article>
+	        		<header>
+	        			<h1>Noticia 1</h1>
+	        		</header>
+	        		<p>
+	        			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia, alias, dolore, dolorem, quaerat aperiam facilis ipsum dolores numquam velit provident voluptatem odio repellat voluptatum quasi non. Ipsam esse cupiditate distinctio.
+	        		</p>
+	        		<p>
+	        			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae, ab, id dignissimos ducimus magnam et ipsum sapiente vero inventore odio temporibus repellendus ipsam esse fuga modi obcaecati pariatur consequuntur sed.
+	        			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae, dolores, at magni expedita aliquid alias facilis a veritatis praesentium officia voluptate ea dolor ex suscipit quibusdam nam pariatur reprehenderit placeat!
+	        		</p>
+	        	</article>
+	        	<article>
+	        		<header>
+	        			<h1>Noticia 2</h1>
+	        		</header>
+	        		<p>
+	        			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae, ab, id dignissimos ducimus magnam et ipsum sapiente vero inventore odio temporibus repellendus ipsam esse fuga modi obcaecati pariatur consequuntur sed.
+	        			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae, dolores, at magni expedita aliquid alias facilis a veritatis praesentium officia voluptate ea dolor ex suscipit quibusdam nam pariatur reprehenderit placeat!
+	        		</p>
+	        	</article>
+	        	<article>
+	        		<header>
+	        			<h1>Noticia 3</h1>
+	        		</header>
+	        		<p>
+	        			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia, alias, dolore, dolorem, quaerat aperiam facilis ipsum dolores numquam velit provident voluptatem odio repellat voluptatum quasi non. Ipsam esse cupiditate distinctio.
+	        		</p>
+	        		<p>
+	        			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae, ab, id dignissimos ducimus magnam et ipsum sapiente vero inventore odio temporibus repellendus ipsam esse fuga modi obcaecati pariatur consequuntur sed.
+	        			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae, dolores, at magni expedita aliquid alias facilis a veritatis praesentium officia voluptate ea dolor ex suscipit quibusdam nam pariatur reprehenderit placeat!
+	        		</p>
+	        	</article>
+	        	<article>
+	        		<header>
+	        			<h1>Noticia 4</h1>
+	        		</header>
+	        		<p>
+	        			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia, alias, dolore, dolorem, quaerat aperiam facilis ipsum dolores numquam velit provident voluptatem odio repellat voluptatum quasi non. Ipsam esse cupiditate distinctio.
+	        		</p>
+	        	</article>
+	        </div>
+	        <aside>
+				<h2>Aside</h2>
+				Esto puede ser un bloque social
+	        </aside>
+        </section>
+        <footer>
+        	Creado con jeet por elibo
+        </footer>
+        
+        
+        <!--[if lt IE 9]>
+            <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+            <script>window.jQuery || document.write('<script src="{% static "js/vendor/jquery-1.10.2.min.js" %}"><\/script>')</script>
+        <![endif]-->
+        <!--[if gt IE 8]><!-->
+            <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+            <script>window.jQuery || document.write('<script src="{% static "js/vendor/jquery-2.0.3.min.js" %}"><\/script>')</script>
+        <!--<![endif]-->
+        <script src="{% static "js/minified.js" %}"></script>
+    </body>
+</html>

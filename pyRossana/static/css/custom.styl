@@ -1,0 +1,42 @@
+@import 'jeet/index'
+
+edit();
+
+section
+	center(1080px)
+
+header
+	padding: 0 1em
+	height 100px
+	> a.logo
+		col(1/4)
+		height inherit
+	> nav
+		col(2/4, offset: 1/4)
+		height inherit
+		a
+			span(1/5 2/4)
+			height inherit
+			&:hover
+				background-color: #CCC
+
+aside
+	span(1/5)
+div.content
+	span(4/5)
+	> article
+		col(2/6 2/4, cycle:3)
+		height: 20em
+		overflow hidden
+		margin-top: 1em
+		header h1
+			text-align: center
+
+footer
+	min-height: 100px
+	padding 1em
+
+// Mobile
+bp()
+
+endbp()
