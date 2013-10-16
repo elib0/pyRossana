@@ -1,16 +1,15 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-
-CIVIL_STATUS_CHOICES = (
-    ('c', _('casado')),
-    ('s', _('soltero')),
-    ('d', _('divorciado')),
+MARITAL_STATUS_CHOICES = (
+    ('c', 'casado'),
+    ('s', 'soltero'),
+    ('d', 'divorciado'),
 )
 
 
 class Person(models.Model):
-    ci = models.PositiveIntegerField(primary_key=True, max_lenght=10)
+    ci = models.PositiveIntegerField(primary_key=True, max_length=10)
     user = models.OneToOneField(User)
     mobile_phone = models.CharField(max_length=12)
     address = models.TextField()
@@ -25,17 +24,18 @@ class PromoterType(models.Model):
 class Promoter(Person):
     age = models.SmallIntegerField(max_length=2)
     marital_status = models.CharField(max_length=1,
-                                        choices=CIVIL_STATUS_CHOICES,
-                                        default=CIVIL_STATUS_CHOICES[0]
+                                        choices=MARITAL_STATUS_CHOICES,
+                                        default=MARITAL_STATUS_CHOICES[0]
                                     )
     height = models.DecimalField(max_digits=4, decimal_places=2)
     weight = models.DecimalField(max_digits=4, decimal_places=2)
-    phone = models.CharField(max_length=12)
-    pin = models.CharField(max_length=8)
-    desciption = models.TextField()
+    phone = models.CharField(max_length=12, blank=True, null=True)
+    pin = models.CharField(max_length=8, blank=True, null=True)
+    desciption = models.TextField(blank=True, null=True)
     rol = models.OneToOneField(PromoterType)
+    studying = models.BooleanField()
 
 
 class PromoterPhoto(models.Model):
     promoter = models.ForeignKey(Promoter)
-    photo = models.ImageField()
+    # photo = models.ImageField(upload_to="promoter_photos")
