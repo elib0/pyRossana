@@ -9,6 +9,9 @@ MARITAL_STATUS_CHOICES = (
 
 
 class Person(models.Model):
+    def __unicode__(self):
+        self.user.username
+
     ci = models.PositiveIntegerField(primary_key=True, max_length=10)
     user = models.OneToOneField(User)
     mobile_phone = models.CharField(max_length=12)
@@ -17,11 +20,17 @@ class Person(models.Model):
 
 
 class PromoterType(models.Model):
+    def __unicode__(self):
+        return self.name
+
     name = models.CharField(max_length=30)
     desciption = models.TextField(max_length=100)
 
 
 class Promoter(Person):
+    def __unicode__(self):
+        self.user.name
+
     age = models.SmallIntegerField(max_length=2)
     marital_status = models.CharField(max_length=1,
                                         choices=MARITAL_STATUS_CHOICES,
@@ -37,5 +46,7 @@ class Promoter(Person):
 
 
 class PromoterPhoto(models.Model):
+    def __unicode__(self):
+        self.promoter
     promoter = models.ForeignKey(Promoter)
     # photo = models.ImageField(upload_to="promoter_photos")
