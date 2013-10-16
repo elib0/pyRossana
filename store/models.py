@@ -1,4 +1,9 @@
 from django.db import models
+from django.contrib.auth.models import User
+
+STATUS_CHOICES = (
+    ('',''),
+)
 
 
 class Categorie(models.Model):
@@ -21,4 +26,11 @@ class Product(models.Model):
 
 class ProductPhoto(models.Model):
     product = models.ForeignKey(Product)
-    # photo = models.ImageField(upload_to="promoter_photos")
+    # photo = models.ImageField(upload_to="product_photos")
+
+
+class Cart(models.Model):
+    user = models.ForeignKey(User)
+    creation_date = models.DateField(auto_now_add=True)
+    purchase_date = models.DateTimeField()
+    status = models.CharField(max_length=1, choices=STATUS_CHOICES)
