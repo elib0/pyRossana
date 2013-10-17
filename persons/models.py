@@ -57,8 +57,10 @@ class Promoter(models.Model):
     study_schedule = models.SmallIntegerField(max_length=1, choices=SCHEDULE_CHOICES)
 
 
-class PromoterPhoto(models.Model):
+class PromoterPhotos(models.Model):
     def __str__(self):
         self.promoter
-    promoter = models.ForeignKey(Promoter)
-    # photo = models.ImageField(upload_to="promoter_photos")
+        
+    promoter = models.OneToOneField(Promoter)
+    photo1 = models.ImageField(upload_to="promoter_photos")
+    photo2 = models.ImageField(upload_to="promoter_photos")

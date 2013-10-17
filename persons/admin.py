@@ -1,6 +1,10 @@
 from django.contrib import admin
-from persons import models
+from persons.models import Promoter, PromoterType, PromoterPhotos
 
 
-admin.site.register(models.PromoterType)
-admin.site.register(models.Promoter)
+class PromoterAdmin(admin.TabularInline):
+    model = PromoterPhotos
+
+
+admin.site.register(PromoterType)
+admin.site.register(Promoter)
