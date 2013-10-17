@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 STATUS_CHOICES = (
-    ('', ''),
+    ('', 'elito'),
 )
 
 
@@ -34,3 +34,8 @@ class Cart(models.Model):
     creation_date = models.DateField(auto_now_add=True)
     purchase_date = models.DateTimeField()
     status = models.CharField(max_length=1, choices=STATUS_CHOICES)
+
+
+class ProductsCart(models.Model):
+    cart = models.ForeignKey(Cart)
+    product = models.ForeignKey(Product)
