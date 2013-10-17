@@ -35,7 +35,7 @@ class PromoterType(models.Model):
         return self.name
 
     name = models.CharField(max_length=30)
-    desciption = models.TextField(max_length=100)
+    desciption = models.TextField(max_length=100, null=True)
 
 
 class Promoter(models.Model):
@@ -59,8 +59,8 @@ class Promoter(models.Model):
 
 class PromoterPhotos(models.Model):
     def __str__(self):
-        self.promoter
-        
+        self.promoter.user.username
+
     promoter = models.OneToOneField(Promoter)
     photo1 = models.ImageField(upload_to="promoter_photos")
     photo2 = models.ImageField(upload_to="promoter_photos")

@@ -10,13 +10,13 @@ STATUS_CHOICES = (
 
 class Categorie(models.Model):
     name = models.CharField(max_length=45)
-    description = models.TextField()
+    description = models.TextField(null=True)
 
 
 class SubCategorie(models.Model):
     categorie = models.ForeignKey(Categorie)
     name = models.CharField(max_length=45)
-    details = models.TextField()
+    details = models.TextField(null=True)
 
 
 class Product(models.Model):
@@ -34,8 +34,10 @@ class ProductPhoto(models.Model):
 class Cart(models.Model):
     user = models.ForeignKey(User)
     creation_date = models.DateField(auto_now_add=True)
-    purchase_date = models.DateTimeField()
-    status = models.CharField(max_length=1, choices=STATUS_CHOICES)
+    purchase_date = models.DateTimeField(null=True)
+    status = models.CharField(max_length=1,
+                              default=STATUS_CHOICES[0],
+                              choices=STATUS_CHOICES)
 
 
 class ProductsInCart(models.Model):
