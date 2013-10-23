@@ -25,7 +25,9 @@
                 {% if user.is_authenticated %}
                 {{ user.username }}
                 {% else %}
-                Anonimo
+                Anonimo <br>
+                <a href="#">Login</a>
+                <a href="#">¡Registrate!</a>
                 {% endif %}
                 <br>
                 <div class="cart">
@@ -33,7 +35,7 @@
                 </div>
             </div>
     		<nav>
-				<a href="#">Link 1</a>
+				<a href="{% url 'home' %}">Inicio</a>
 				<a href="#">Link 2</a>
 				<a href="#">Link 3</a>
 				<a href="#">Link 4</a>
