@@ -20,16 +20,6 @@ User.add_to_class('mobile_phone', models.CharField(max_length=12))
 User.add_to_class('address', models.TextField())
 
 
-# class Person(models.Model):
-#     def __str__(self):
-#         self.user.username
-
-#     ci = models.PositiveIntegerField(primary_key=True, max_length=10)
-#     user = models.OneToOneField(User)
-#     mobile_phone = models.CharField(max_length=12)
-#     address = models.TextField()
-
-
 class PromoterType(models.Model):
     def __str__(self):
         return self.name
@@ -51,7 +41,7 @@ class Promoter(models.Model):
     weight = models.DecimalField(max_digits=4, decimal_places=2)
     phone = models.CharField(max_length=12, blank=True, null=True)
     pin = models.CharField(max_length=8, blank=True, null=True)
-    desciption = models.TextField(blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
     rol = models.OneToOneField(PromoterType)
     studying = models.BooleanField()
     study_schedule = models.SmallIntegerField(max_length=1, choices=SCHEDULE_CHOICES)
