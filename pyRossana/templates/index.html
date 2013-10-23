@@ -20,7 +20,18 @@
             <div class="browsehappy"><p>You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/" target="_blank">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true" target="_blank">activate Google Chrome Frame</a> to improve your experience.</p></div>
         <![endif]-->
         <header>
-    		<a href="#" class="logo">Logo</a>
+    		<div class="logo">
+                Bienvendio:
+                {% if user.is_authenticated %}
+                {{ user.username }}
+                {% else %}
+                Anonimo
+                {% endif %}
+                <br>
+                <div class="cart">
+                    Productos en el carrito:<span>{{ num }}</span>
+                </div>
+            </div>
     		<nav>
 				<a href="#">Link 1</a>
 				<a href="#">Link 2</a>
@@ -29,79 +40,55 @@
 				<a href="#">Link 5</a>
 			</nav>
     	</header>
-    	<form action="#" method="POST" id="frmPromoter">{% csrf_token %}
-    		<br><br>
-    		{{ form2 }}
-    		<p>
-    			{{ form1.username.errors }}
-    			{{ form1.username.label_tag }} : {{ form1.username }}
-    		</p>
-    		<p>
-    			{{ form1.password.errors }}
-    			{{ form1.password.label_tag }} : {{ form1.password }}
-    			{{ form1.repassword.errors }}
-    			{{ form1.repassword.label_tag }} : {{ form1.repassword }}
-    		</p>
-    		<p>
-    			{{ form1.first_name.errors }}
-    			{{ form1.first_name.label_tag }} : {{ form1.first_name }}
-    			{{ form1.last_name.errors }}
-    			{{ form1.last_name.label_tag }} : {{ form1.last_name }}
-    		</p>
-    		<p>
-    			{{ form1.ci.errors }}
-    			{{ form1.ci.label_tag }} : {{ form1.ci }}
-    		</p>
-    		<p>
-    			{{ form1.email.errors }}
-    			{{ form1.email.label_tag }} : {{ form1.email }}
-    		</p>
-    		<input type="reset">
-    		<input type="submit">
-    	</form>
+{% comment %}
+            <form action="#" method="POST" id="frmPromoter">{% csrf_token %}
+            <br><br>
+            {{ form2 }}
+            <p>
+                {{ form1.username.errors }}
+                {{ form1.username.label_tag }} : {{ form1.username }}
+            </p>
+            <p>
+                {{ form1.password.errors }}
+                {{ form1.password.label_tag }} : {{ form1.password }}
+                {{ form1.repassword.errors }}
+                {{ form1.repassword.label_tag }} : {{ form1.repassword }}
+            </p>
+            <p>
+                {{ form1.first_name.errors }}
+                {{ form1.first_name.label_tag }} : {{ form1.first_name }}
+                {{ form1.last_name.errors }}
+                {{ form1.last_name.label_tag }} : {{ form1.last_name }}
+            </p>
+            <p>
+                {{ form1.ci.errors }}
+                {{ form1.ci.label_tag }} : {{ form1.ci }}
+            </p>
+            <p>
+                {{ form1.email.errors }}
+                {{ form1.email.label_tag }} : {{ form1.email }}
+            </p>
+            <input type="reset">
+            <input type="submit">
+        </form>
+{% endcomment %}
         <section>
 	        <div class="content">
-	        	<article>
-	        		<header>
-	        			<h1>Noticia 1</h1>
-	        		</header>
-	        		<p>
-	        			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia, alias, dolore, dolorem, quaerat aperiam facilis ipsum dolores numquam velit provident voluptatem odio repellat voluptatum quasi non. Ipsam esse cupiditate distinctio.
-	        		</p>
-	        		<p>
-	        			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae, ab, id dignissimos ducimus magnam et ipsum sapiente vero inventore odio temporibus repellendus ipsam esse fuga modi obcaecati pariatur consequuntur sed.
-	        			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae, dolores, at magni expedita aliquid alias facilis a veritatis praesentium officia voluptate ea dolor ex suscipit quibusdam nam pariatur reprehenderit placeat!
-	        		</p>
-	        	</article>
-	        	<article>
-	        		<header>
-	        			<h1>Noticia 2</h1>
-	        		</header>
-	        		<p>
-	        			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae, ab, id dignissimos ducimus magnam et ipsum sapiente vero inventore odio temporibus repellendus ipsam esse fuga modi obcaecati pariatur consequuntur sed.
-	        			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae, dolores, at magni expedita aliquid alias facilis a veritatis praesentium officia voluptate ea dolor ex suscipit quibusdam nam pariatur reprehenderit placeat!
-	        		</p>
-	        	</article>
-	        	<article>
-	        		<header>
-	        			<h1>Noticia 3</h1>
-	        		</header>
-	        		<p>
-	        			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia, alias, dolore, dolorem, quaerat aperiam facilis ipsum dolores numquam velit provident voluptatem odio repellat voluptatum quasi non. Ipsam esse cupiditate distinctio.
-	        		</p>
-	        		<p>
-	        			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae, ab, id dignissimos ducimus magnam et ipsum sapiente vero inventore odio temporibus repellendus ipsam esse fuga modi obcaecati pariatur consequuntur sed.
-	        			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae, dolores, at magni expedita aliquid alias facilis a veritatis praesentium officia voluptate ea dolor ex suscipit quibusdam nam pariatur reprehenderit placeat!
-	        		</p>
-	        	</article>
-	        	<article>
-	        		<header>
-	        			<h1>Noticia 4</h1>
-	        		</header>
-	        		<p>
-	        			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia, alias, dolore, dolorem, quaerat aperiam facilis ipsum dolores numquam velit provident voluptatem odio repellat voluptatum quasi non. Ipsam esse cupiditate distinctio.
-	        		</p>
-	        	</article>
+            {% if products %}
+                {% for product in products %}
+                <article>
+                    <header>
+                        <h1>{{ product.name }}</h1>
+                    </header>
+                    <p>
+                        {{ product.detail }}
+                    </p>
+                    <footer>{{ product.sub_categorie }}</footer>
+                </article>
+                {% endfor %}
+            {% else %}
+                <h1>No hay servicios disponibles actualmente</h1>             
+            {% endif %}
 	        </div>
 	        <aside>
 				<h2>Aside</h2>
