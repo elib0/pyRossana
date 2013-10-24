@@ -1,3 +1,4 @@
+#encoding:utf-8
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -8,7 +9,7 @@ MARITAL_STATUS_CHOICES = (
 )
 
 SCHEDULE_CHOICES = (
-    (1, 'Manana'),
+    (1, 'Mañana'),
     (2, 'Tarde'),
     (3, 'Noche'),
 )
