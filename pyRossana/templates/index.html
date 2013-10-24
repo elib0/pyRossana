@@ -23,10 +23,15 @@
     		<div class="logo">
                 Bienvendio:
                 {% if user.is_authenticated %}
-                {{ user.username }}
+                	{% if user.first_name and user.last_name %}
+                		{{ user.last_name }}. {{ user.first_name }}. 
+                	{% else %}
+                		{{ user.username }}
+                	{% endif %}
+                	<br><a href="{% url 'person:logout' %}">Salir</a>
                 {% else %}
                 Anonimo <br>
-                <a href="#">Login</a>
+                <a href="{% url 'person:login' %}">Login</a>
                 <a href="#">¡Registrate!</a>
                 {% endif %}
                 <br>
@@ -35,11 +40,13 @@
                 </div>
             </div>
     		<nav>
-				<a href="{% url 'home' %}">Inicio</a>
+    		{% block mainmenu %}
+    			<a href="{% url 'home' %}">Inicio</a>
 				<a href="#">Link 2</a>
 				<a href="#">Link 3</a>
 				<a href="#">Link 4</a>
-				<a href="#">Link 5</a>
+				<a href="#">Link 5</a>	
+    		{% endblock mainmenu %}
 			</nav>
     	</header>
 {% comment %}
@@ -74,33 +81,36 @@
             <input type="submit">
         </form>
 {% endcomment %}
-        <section>
-	        <div class="content">
-            {% if products %}
-                {% for product in products %}
-                <article>
-                    <header>
-                        <h1>{{ product.name }}</h1>
-                    </header>
-                    <p>
-                        {{ product.detail }}
-                    </p>
-                    <footer>{{ product.sub_categorie }}</footer>
-                </article>
-                {% endfor %}
-            {% else %}
-                <h1>No hay servicios disponibles actualmente</h1>             
-            {% endif %}
-	        </div>
-	        <aside>
-				<h2>Aside</h2>
-				Esto puede ser un bloque social
-	        </aside>
-        </section>
+		{% block content %}
+			<section>
+		        <div class="content">
+	            {% if products %}
+	                {% for product in products %}
+	                <article>
+	                    <header>
+	                        <h1>{{ product.name }}</h1>
+	                    </header>
+	                    <p>
+	                    	<img src="" alt="">
+	                        {{ product.details }}
+	                    </p>
+	                    <footer>Categoria:{{ product.sub_categorie }}</footer>
+	                </article>
+	                {% endfor %}
+	            {% else %}
+	                <h1>No hay servicios disponibles actualmente</h1>             
+	            {% endif %}
+		        </div>
+	        </section>
+		{% endblock content %}
         <footer>
-        	Creado con jeet por elibo
+        {% block footer %}
+        	Creado con jeet por elibo.
+        	{% if user.is_staff %}
+        		<a href="admin/" target="_blank">Administrar</a>
+        	{% endif %}
+        {% endblock footer %}
         </footer>
-        
         <!--[if lt IE 9]>
             <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
             <script>window.jQuery || document.write('<script src="{% static "js/vendor/jquery-1.10.2.min.js" %}"><\/script>')</script>

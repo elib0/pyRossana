@@ -9,17 +9,23 @@ STATUS_CHOICES = (
 
 
 class Categorie(models.Model):
+    def __str__(self):
+        self.name
     name = models.CharField(max_length=45)
     description = models.TextField(null=True)
 
 
 class SubCategorie(models.Model):
+    def __str__(self):
+        return self.name
     categorie = models.ForeignKey(Categorie)
     name = models.CharField(max_length=45)
     details = models.TextField(null=True)
 
 
 class Product(models.Model):
+    def __str__(self):
+        return self.name
     name = models.CharField(max_length=45)
     price = models.DecimalField(max_digits=8, decimal_places=2)
     details = models.TextField()
