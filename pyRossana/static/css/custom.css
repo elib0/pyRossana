@@ -1,6 +1,6 @@
-body,.cf,.browsehappy p,section,header > .logo,header > nav,header > nav a,div.content,div.content > article{*zoom:1;}
-body:before,.cf:before,.browsehappy p:before,section:before,header > .logo:before,header > nav:before,header > nav a:before,div.content:before,div.content > article:before,body:after,.cf:after,.browsehappy p:after,section:after,header > .logo:after,header > nav:after,header > nav a:after,div.content:after,div.content > article:after{content:'';display:table}
-body:after,.cf:after,.browsehappy p:after,section:after,header > .logo:after,header > nav:after,header > nav a:after,div.content:after,div.content > article:after{clear:both}
+body,.cf,.browsehappy p,section,body > header > .logo,body > header > nav,body > header > nav a,div.content,div.content > article{*zoom:1;}
+body:before,.cf:before,.browsehappy p:before,section:before,body > header > .logo:before,body > header > nav:before,body > header > nav a:before,div.content:before,div.content > article:before,body:after,.cf:after,.browsehappy p:after,section:after,body > header > .logo:after,body > header > nav:after,body > header > nav a:after,div.content:after,div.content > article:after{content:'';display:table}
+body:after,.cf:after,.browsehappy p:after,section:after,body > header > .logo:after,body > header > nav:after,body > header > nav a:after,div.content:after,div.content > article:after{clear:both}
 *,*:before,*:after,*::before,*::after{box-sizing:border-box;*behavior:url("js/vendor/boxsizing.htc");margin:0;padding:0}
 html{overflow-y:scroll;overflow-x:hidden}
 body{width:100%}
@@ -51,15 +51,15 @@ header h6 ~ p{margin-top:-1.25px}
 }
 *{background:rgba(0,0,0,0.05) url("../img/edit_mixin.png")}
 section{width:auto;max-width:1080px;float:none;display:block;margin-right:auto;margin-left:auto;padding-left:15px;padding-right:15px}
-header{padding:0 1em;height:100px;}
-header > .logo{float:left;width:22.75%;margin-left:0%;margin-right:3%;height:inherit}
-header > .logo:last-child{margin-right:0%}
-header > nav{float:left;width:48.5%;margin-left:25.75%;margin-right:3%;height:inherit;}
-header > nav:last-child{margin-right:0%}
-header > nav a{float:left;width:20%;margin-left:0%;margin-right:0%;height:inherit;}
-header > nav a:hover{background-color:#ccc}
+body > header{padding:0 1em;height:100px;}
+body > header > .logo{float:left;width:22.75%;margin-left:0%;margin-right:3%;height:inherit}
+body > header > .logo:last-child{margin-right:0%}
+body > header > nav{float:left;width:48.5%;margin-left:25.75%;margin-right:3%;height:inherit;}
+body > header > nav:last-child{margin-right:0%}
+body > header > nav a{float:left;width:20%;margin-left:0%;margin-right:0%;height:inherit;}
+body > header > nav a:hover{background-color:#ccc}
 div.content{float:left;width:100%;margin-left:0%;margin-right:0%;}
-div.content > article{float:left;width:29.209621993127143%;margin-left:0%;margin-right:6.185567010309279%;height:20em;overflow:hidden;margin-top:1em;}
+div.content > article{float:left;width:29.209621993127143%;margin-left:0%;margin-right:6.185567010309279%;overflow:hidden;margin-top:1em;}
 div.content > article:nth-child(3n){margin-right:0%;float:right}
 div.content > article header h1{text-align:center}
 footer{min-height:100px;padding:1em}
