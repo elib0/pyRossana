@@ -12,25 +12,25 @@ STATUS_CHOICES = (
 class Categorie(models.Model):
     def __str__(self):
         self.name
-    name = models.CharField(max_length=45)
-    description = models.TextField(null=True)
+    name = models.CharField('Nombre', max_length=45)
+    description = models.TextField('Descripción', null=True)
 
 
 class SubCategorie(models.Model):
     def __str__(self):
         return self.name
-    categorie = models.ForeignKey(Categorie)
-    name = models.CharField(max_length=45)
-    details = models.TextField(null=True)
+    categorie = models.ForeignKey(Categorie, verbose_name=u'Categoria')
+    name = models.CharField('Nombre', max_length=45)
+    details = models.TextField('Detalles', null=True)
 
 
 class Product(models.Model):
     def __str__(self):
         return self.name
-    name = models.CharField(max_length=45)
-    price = models.DecimalField(max_digits=8, decimal_places=2)
-    details = models.TextField()
-    sub_categorie = models.ForeignKey(SubCategorie)
+    name = models.CharField('Nombre', max_length=45)
+    price = models.DecimalField('Precio (BS)', max_digits=8, decimal_places=2)
+    details = models.TextField('Detalles')
+    sub_categorie = models.ForeignKey(SubCategorie, verbose_name=u'Sub Categoría')
 
 
 class ProductPhoto(models.Model):

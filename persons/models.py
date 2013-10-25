@@ -3,9 +3,9 @@ from django.db import models
 from django.contrib.auth.models import User
 
 MARITAL_STATUS_CHOICES = (
-    ('c', 'casado'),
-    ('s', 'soltero'),
-    ('d', 'divorciado'),
+    ('c', 'Casado'),
+    ('s', 'Soltero'),
+    ('d', 'Divorciado'),
 )
 
 SCHEDULE_CHOICES = (
@@ -25,27 +25,27 @@ class PromoterType(models.Model):
     def __str__(self):
         return self.name
 
-    name = models.CharField(max_length=30)
-    desciption = models.TextField(max_length=100, null=True)
+    name = models.CharField('Nombre', max_length=30)
+    desciption = models.TextField('Descripción', max_length=100, null=True)
 
 
 class Promoter(models.Model):
     def __str__(self):
         self.user.name
 
-    user = models.OneToOneField(User)
-    age = models.DateField()
-    marital_status = models.CharField(max_length=1,
+    user = models.OneToOneField(User, verbose_name=u'Usuario')
+    age = models.DateField('Fecha Nacimiento')
+    marital_status = models.CharField('Estado Civil', max_length=1,
                                       choices=MARITAL_STATUS_CHOICES,
                                       default=MARITAL_STATUS_CHOICES[0])
-    height = models.DecimalField(max_digits=4, decimal_places=2)
-    weight = models.DecimalField(max_digits=4, decimal_places=2)
-    phone = models.CharField(max_length=12, blank=True, null=True)
-    pin = models.CharField(max_length=8, blank=True, null=True)
+    height = models.DecimalField('Estatura', max_digits=4, decimal_places=2)
+    weight = models.DecimalField('Peso(KG)', max_digits=4, decimal_places=2)
+    phone = models.CharField('Teléfono habitación', max_length=12, blank=True, null=True)
+    pin = models.CharField('Blackberry PIN', max_length=8, blank=True, null=True)
     description = models.TextField(blank=True, null=True)
-    rol = models.OneToOneField(PromoterType)
-    studying = models.BooleanField()
-    study_schedule = models.SmallIntegerField(max_length=1, choices=SCHEDULE_CHOICES)
+    rol = models.OneToOneField(PromoterType, verbose_name=u'Tipo de promotor')
+    studying = models.BooleanField('¿Estudias?')
+    study_schedule = models.SmallIntegerField('Turno de estudio', max_length=1, choices=SCHEDULE_CHOICES)
 
 
 class PromoterPhotos(models.Model):
