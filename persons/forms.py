@@ -1,3 +1,4 @@
+#encoding:utf-8
 from django import forms
 from django.contrib.auth.models import User
 from persons.models import Promoter
@@ -6,7 +7,7 @@ from persons.models import Promoter
 class LoginForm(forms.Form):
     name = forms.CharField(max_length=30, min_length=5, required=True, label='Nombre')
     password = forms.CharField(widget=forms.PasswordInput(),
-                               label='Contrasena',
+                               label='Contraseña',
                                required=True,
                                max_length=30, min_length=6)
 
@@ -23,7 +24,7 @@ class PersonForm(forms.ModelForm):
                    'date_joined',)
     ci = forms.IntegerField(max_value=9, min_value=8, label='Cedula')
     repassword = forms.CharField(widget=forms.PasswordInput(),
-                                 label='Repite Contrasena',
+                                 label='Repite Contraseña',
                                  required=True,
                                  max_length=30, min_length=6)
 
@@ -32,7 +33,7 @@ class PersonForm(forms.ModelForm):
         password = cleaned_data.get('password')
         repassword = cleaned_data.get('repassword')
         if password != repassword:
-            raise forms.ValidationError("Las contrasenas no son iguales")
+            raise forms.ValidationError("Las Contraseñas no son iguales")
         return cleaned_data
 
 

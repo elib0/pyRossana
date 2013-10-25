@@ -3,9 +3,9 @@ from django.db import models
 from django.contrib.auth.models import User
 
 STATUS_CHOICES = (
-    ('p', 'pending'),
-    ('c', 'canceled'),
-    ('o', 'completed'),
+    ('p', 'Pendiente'),
+    ('c', 'Cancelada'),
+    ('o', 'Concretada'),
 )
 
 
