@@ -11,6 +11,7 @@
         {% endblock title %}</title>
         <meta name="viewport" content="width=device-width">
         {% load staticfiles %}
+        <link rel="stylesheet" href="{% static "css/onepage-scroll.css" %}">
         <link rel="stylesheet" href="{% static "css/custom.css" %}">
         <!--[if lt IE 9]><script src="{% static "js/vendor/selectivizr-1.0.2.min.js" %}"></script><![endif]-->
         <script src="{% static "js/vendor/selectivizr-1.0.2.min.js" %}"></script>
@@ -81,30 +82,35 @@
             <input type="submit">
         </form>
 {% endcomment %}
+		<div class="content">
 		{% block content %}
-			<section>
-		        <div class="content">
-	                {% for product in products %}
-	                <article>
-	                    <header>
-	                        <h1>{{ product.name }}</h1>
-	                    </header>
-	                    <p>
-	                    	{% for img in product.productphoto_set.all %}
-	                    		{% if forloop.first %}
-	                    			<img src="{{ MEDIA_URL }}{{ img.photo }}" alt="{{ product.name }}"><br>
-	                    		{% endif %}
-	                    	{% endfor %}	                    	
-	                        {{ product.details }}
-	                    </p>
-	                    <footer>Categoria:{{ product.sub_categorie }}</footer>
-	                </article>
-	                {% empty %}
-	                <h1>No hay servicios disponibles actualmente</h1>
-	                {% endfor %}
-		        </div>
-	        </section>
+			<section class="page1">
+				<div class="page-wrapper">
+					<div class="page_container">
+						<h1>One Page Scroll</h1>
+						<h2>Create an Apple-like one page scroller website (iPhone 5S website) with One Page Scroll plugin</h2>
+						<p class="credit">Created by <a href="http://www.thepetedesign.com">Pete R.</a>, Founder of <a href="http://www.bucketlistly.com" target="_blank">BucketListly</a></p>
+						<div class="btns">
+							<a class="reload btn" href="https://github.com/peachananr/onepage-scroll">Download on Github</a>
+						</div>
+					</div>
+				</div>
+				<img src="phones.png" alt="phones">
+			</section>
+			{% include "product_list.html" %}
+			<section class="page3">
+				<div class="page-wrapper">
+					<div class="page_container">
+						<h1>Pretty Neat Eh?</h1>
+						<h2>You can customise the animation timing, the selector or even the animation easing using CSS3. I can't wait to see what you guys will come up with. Don't forget to grab them for free on Github'</h2>
+						<div class="btns">
+							<a class="reload btn" href="https://github.com/peachananr/onepage-scroll">Download on Github</a>
+						</div>
+					</div>
+				</div>
+			</section>
 		{% endblock content %}
+		</div>
         <footer>
         {% block footer %}
         	Creado con jeet por elibo.
@@ -121,6 +127,7 @@
             <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
             <script>window.jQuery || document.write('<script src="{% static "js/vendor/jquery-2.0.3.min.js" %}"><\/script>')</script>
         <!--<![endif]-->
-        <script src="{% static "js/minified.js" %}"></script>
+        <script src="{% static "js/main.js" %}"></script>
+        <script src="{% static "js/vendor/jquery.onepage-scroll.min.js" %}"></script>
     </body>
 </html>
