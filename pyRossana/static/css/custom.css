@@ -1,6 +1,6 @@
-body,.cf,.browsehappy p,body > header > .logo,body > header > nav,body > header > nav a,.page-wrapper,.page-wrapper > article{*zoom:1;}
-body:before,.cf:before,.browsehappy p:before,body > header > .logo:before,body > header > nav:before,body > header > nav a:before,.page-wrapper:before,.page-wrapper > article:before,body:after,.cf:after,.browsehappy p:after,body > header > .logo:after,body > header > nav:after,body > header > nav a:after,.page-wrapper:after,.page-wrapper > article:after{content:'';display:table}
-body:after,.cf:after,.browsehappy p:after,body > header > .logo:after,body > header > nav:after,body > header > nav a:after,.page-wrapper:after,.page-wrapper > article:after{clear:both}
+body,.cf,.browsehappy p,body > header > div.profile-nav,body > header > div.link-nav,.page-wrapper,.page-wrapper > article{*zoom:1;}
+body:before,.cf:before,.browsehappy p:before,body > header > div.profile-nav:before,body > header > div.link-nav:before,.page-wrapper:before,.page-wrapper > article:before,body:after,.cf:after,.browsehappy p:after,body > header > div.profile-nav:after,body > header > div.link-nav:after,.page-wrapper:after,.page-wrapper > article:after{content:'';display:table}
+body:after,.cf:after,.browsehappy p:after,body > header > div.profile-nav:after,body > header > div.link-nav:after,.page-wrapper:after,.page-wrapper > article:after{clear:both}
 *,*:before,*:after,*::before,*::after{box-sizing:border-box;*behavior:url("js/vendor/boxsizing.htc");margin:0;padding:0}
 html{overflow-y:scroll;overflow-x:hidden}
 body{width:100%}
@@ -50,14 +50,13 @@ header h5 ~ p{margin-top:-1.25px}
 header h6 ~ p{margin-top:-1.25px}
 }
 *{background:rgba(0,0,0,0.05) url("../img/edit_mixin.png")}
-body > header{padding:0 1em;height:100px;}
-body > header > .logo{float:left;width:22.75%;margin-left:0%;margin-right:3%;height:inherit}
-body > header > .logo:last-child{margin-right:0%}
-body > header > nav{float:left;width:48.5%;margin-left:25.75%;margin-right:3%;height:inherit;}
-body > header > nav:last-child{margin-right:0%}
-body > header > nav a{float:left;width:20%;margin-left:0%;margin-right:0%;height:inherit;}
-body > header > nav a:hover{background-color:#ccc}
-section{width:100%}
+body > header{padding:0 1em;height:40px;}
+body > header > div{height:inherit}
+body > header > div.profile-nav{float:left;width:20.594713656387665%;margin-left:0%;margin-right:5.873715124816447%;}
+body > header > div.profile-nav:last-child{margin-right:0%}
+body > header > div.link-nav{float:left;width:47.06314243759177%;margin-left:26.46842878120411%;margin-right:5.873715124816447%;text-align:right}
+body > header > div.link-nav:last-child{margin-right:0%}
+section{width:100%;height:100%}
 .page-wrapper{width:auto;max-width:1080px;float:none;display:block;margin-right:auto;margin-left:auto;padding-left:15px;padding-right:15px;}
 .page-wrapper > article{float:left;width:29.209621993127143%;margin-left:0%;margin-right:6.185567010309279%;margin-top:1em;}
 .page-wrapper > article:nth-child(3n){margin-right:0%;float:right}
