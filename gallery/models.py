@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class Folder(models.Model):
+class Album(models.Model):
     def __str__(self):
         return self.name
     name = models.CharField('Nombre Carpeta', max_length=20)
@@ -13,9 +13,9 @@ class Folder(models.Model):
 class Picture(models.Model):
     def __str__(self):
         return self.title
+    folder = models.ForeignKey(Album)
     title = models.CharField('Titulo', max_length=15)
     picture = models.ImageField('Foto')
-    folder = models.ForeignKey(Folder)
 
 
 class Comment(models.Model):
