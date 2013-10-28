@@ -21,7 +21,7 @@
             <div class="browsehappy"><p>You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/" target="_blank">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true" target="_blank">activate Google Chrome Frame</a> to improve your experience.</p></div>
         <![endif]-->
         <header>
-    		<div class="logo">
+    		<div class="profile-nav">
                 Bienvendio:
                 {% if user.is_authenticated %}
                 	{% if user.first_name and user.last_name %}
@@ -29,26 +29,18 @@
                 	{% else %}
                 		{{ user.username }}
                 	{% endif %}
-                	<br><a href="{% url 'person:logout' %}">Salir</a>
                 {% else %}
-	                Anonimo <br>
-	                <a href="{% url 'person:login' %}">Login</a>
-	                <a href="#">¡Registrate!</a>
+	                Anonimo
                 {% endif %}
-                <br>
-                <div class="cart">
-                    Productos en el carrito:<span>{{ num }}</span>
-                </div>
             </div>
-    		<nav>
-    		{% block mainmenu %}
-    			<a href="{% url 'home' %}">Inicio</a>
-				<a href="#">Link 2</a>
-				<a href="#">Link 3</a>
-				<a href="#">Link 4</a>
-				<a href="#">Link 5</a>	
-    		{% endblock mainmenu %}
-			</nav>
+            <div class="link-nav">
+                {% if user.is_authenticated %}
+                    <a href="{% url 'person:logout' %}">Salir</a>
+                {% else %}
+                    <a href="{% url 'person:login' %}">Login</a>
+                    <a href="#">¡Registrate!</a>
+                {% endif %}
+            </div>
     	</header>
 {% comment %}
             <form action="#" method="POST" id="frmPromoter">{% csrf_token %}
@@ -84,41 +76,10 @@
 {% endcomment %}
 		<div class="content">
 		{% block content %}
-			<section class="page1">
-				<div class="page-wrapper">
-					<div class="page_container">
-						<h1>One Page Scroll</h1>
-						<h2>Create an Apple-like one page scroller website (iPhone 5S website) with One Page Scroll plugin</h2>
-						<p class="credit">Created by <a href="http://www.thepetedesign.com">Pete R.</a>, Founder of <a href="http://www.bucketlistly.com" target="_blank">BucketListly</a></p>
-						<div class="btns">
-							<a class="reload btn" href="https://github.com/peachananr/onepage-scroll">Download on Github</a>
-						</div>
-					</div>
-				</div>
-			</section>
-			{% include "store/product_list.html" %}
-			<section class="page3">
-				<div class="page-wrapper">
-					<div class="page_container">
-						<h1>Pretty Neat Eh?</h1>
-						<h2>You can customise the animation timing, the selector or even the animation easing using CSS3. I can't wait to see what you guys will come up with. Don't forget to grab them for free on Github'</h2>
-						<div class="btns">
-							<a class="reload btn" href="https://github.com/peachananr/onepage-scroll">Download on Github</a>
-						</div>
-					</div>
-				</div>
-			</section>
-			<section class="page4">
-				<div class="page-wrapper">
-					<div class="page_container">
-						<h1>Image Gallery</h1>
-						<h2>You can customise the animation timing, the selector or even the animation easing using CSS3. I can't wait to see what you guys will come up with. Don't forget to grab them for free on Github'</h2>
-						<div class="btns">
-							<a class="reload btn" href="https://github.com/peachananr/onepage-scroll">Download on Github</a>
-						</div>
-					</div>
-				</div>
-			</section>
+			{% include "partial/about.html" %}
+			{% include "store/index.html" %}
+			{% include "persons/register_promoter.html" %}
+            {% include "gallery/index.html" %}
 		{% endblock content %}
 		</div>
         <footer>
