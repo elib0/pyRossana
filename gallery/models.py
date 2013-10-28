@@ -1,3 +1,4 @@
+#encoding:utf-8
 from django.db import models
 
 
@@ -15,7 +16,7 @@ class Picture(models.Model):
         return self.title
     folder = models.ForeignKey(Album)
     title = models.CharField('Titulo', max_length=15)
-    picture = models.ImageField('Foto')
+    picture = models.ImageField('Foto', upload_to='gallery')
 
 
 class Comment(models.Model):

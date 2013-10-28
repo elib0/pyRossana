@@ -26,31 +26,33 @@ class PromoterType(models.Model):
         return self.name
 
     name = models.CharField('Nombre', max_length=30)
-    desciption = models.TextField('Descripción', max_length=100, null=True)
+    desciption = models.TextField('Descripción', max_length=100, null=True,)
 
 
 class Promoter(models.Model):
     def __str__(self):
         self.user.name
 
-    ci = models.PositiveIntegerField(unique=True,
+    ci = models.PositiveIntegerField('Cedula',
+                                     unique=True,
                                      default=0,
                                      max_length=10)
-    first_name = models.CharField('Nombre')
-    last_name = models.CharField('Apellido')
+    first_name = models.CharField('Nombre', max_length=30)
+    last_name = models.CharField('Apellido', max_length=30)
     age = models.DateField('Fecha Nacimiento')
     marital_status = models.CharField('Estado Civil', max_length=1,
                                       choices=MARITAL_STATUS_CHOICES,
                                       default=MARITAL_STATUS_CHOICES[0])
     height = models.DecimalField('Estatura', max_digits=4, decimal_places=2)
     weight = models.DecimalField('Peso(KG)', max_digits=4, decimal_places=2)
+    measure = models.CommaSeparatedIntegerField(max_length=8)
     mobile_phone = models.CharField('Teléfono móvil', max_length=12)
     phone = models.CharField('Teléfono habitación', max_length=12, blank=True, null=True)
     pin = models.CharField('Blackberry PIN', max_length=8, blank=True, null=True)
     description = models.TextField(blank=True, null=True)
-    rol = models.OneToOneField(PromoterType, verbose_name=u'Tipo de promotor')
+    rol = models.ManyToManyField(PromoterType, verbose_name=u'Tipo de promotor')
     studying = models.BooleanField('¿Estudias?')
-    study_schedule = models.SmallIntegerField('Turno de estudio', 
+    study_schedule = models.SmallIntegerField('Turno de estudio',
                                               max_length=1,
                                               choices=SCHEDULE_CHOICES)
 
