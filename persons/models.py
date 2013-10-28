@@ -33,19 +33,26 @@ class Promoter(models.Model):
     def __str__(self):
         self.user.name
 
-    user = models.OneToOneField(User, verbose_name=u'Usuario')
+    ci = models.PositiveIntegerField(unique=True,
+                                     default=0,
+                                     max_length=10)
+    first_name = models.CharField('Nombre')
+    last_name = models.CharField('Apellido')
     age = models.DateField('Fecha Nacimiento')
     marital_status = models.CharField('Estado Civil', max_length=1,
                                       choices=MARITAL_STATUS_CHOICES,
                                       default=MARITAL_STATUS_CHOICES[0])
     height = models.DecimalField('Estatura', max_digits=4, decimal_places=2)
     weight = models.DecimalField('Peso(KG)', max_digits=4, decimal_places=2)
+    mobile_phone = models.CharField('Teléfono móvil', max_length=12)
     phone = models.CharField('Teléfono habitación', max_length=12, blank=True, null=True)
     pin = models.CharField('Blackberry PIN', max_length=8, blank=True, null=True)
     description = models.TextField(blank=True, null=True)
     rol = models.OneToOneField(PromoterType, verbose_name=u'Tipo de promotor')
     studying = models.BooleanField('¿Estudias?')
-    study_schedule = models.SmallIntegerField('Turno de estudio', max_length=1, choices=SCHEDULE_CHOICES)
+    study_schedule = models.SmallIntegerField('Turno de estudio', 
+                                              max_length=1,
+                                              choices=SCHEDULE_CHOICES)
 
 
 class PromoterPhotos(models.Model):

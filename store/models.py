@@ -16,14 +16,6 @@ class Categorie(models.Model):
     description = models.TextField('Descripción', null=True)
 
 
-class SubCategorie(models.Model):
-    def __str__(self):
-        return self.name
-    categorie = models.ForeignKey(Categorie, verbose_name=u'Categoria')
-    name = models.CharField('Nombre', max_length=45)
-    details = models.TextField('Detalles', null=True)
-
-
 class Product(models.Model):
     def __str__(self):
         return self.name
