@@ -50,6 +50,7 @@ header h5 ~ p{margin-top:-1.25px}
 header h6 ~ p{margin-top:-1.25px}
 }
 *{background:rgba(0,0,0,0.05) url("../img/edit_mixin.png")}
+input[type=search]{width:30em;text-align:right}
 body > header{position:absolute;top:0;left:0;padding:0 1em;height:40px;width:100%;}
 body > header > div{height:inherit}
 body > header > div.profile-nav{float:left;width:20.594713656387665%;margin-left:0%;margin-right:5.873715124816447%;}

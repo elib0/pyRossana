@@ -23,6 +23,16 @@ def loginuser(request):
     return render(request, 'persons/login.html', {'form': form})
 
 
+def registeruser(request):
+    if request.method == 'POST':
+        pass
+    else:
+        form = personform.RegisterForm()
+    return render(request, 'persons/register.html', {'form': form})
+
+
+
+
 def logoutuser(request):
     if request.user.is_authenticated():
         logout(request)
