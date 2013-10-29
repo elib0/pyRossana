@@ -47,7 +47,7 @@
                 {% if user.is_authenticated %}
                     <a href="{% url 'person:logout' %}">Salir</a>
                 {% else %}
-                    <a href="{% url 'person:login' %}">Login</a>
+                    <a href="{% url 'person:login' %}" id="login">Login</a>
                     <a href="{% url 'person:register' %}">¡Registrate!</a>
                 {% endif %}
             </div>
@@ -74,9 +74,10 @@
         <script src="{% static "js/vendor/jquery.onepage-scroll.min.js" %}"></script>
         <script>
             $(function() {
+                //Navegacion
                 $(".content").onepage_scroll({
                     sectionContainer: "section"
-                });    
+                });
             });
         </script>
         {% endblock js %}       

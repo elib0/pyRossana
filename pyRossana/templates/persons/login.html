@@ -1,11 +1,16 @@
 {% extends "index.html" %}
 
 {% block content %}
-	<form action="{% url 'person:login' %}" method="POST">{% csrf_token %}
-		{{ form.as_p }}
-		<input type="submit">
-	</form>
-{% endblock content %}
-{% block includejs %}
+<section class="register">
+	<div class="page-wrapper">
+		<form action="{% url 'person:login' %}" method="POST">{% csrf_token %}
+			{{ form.as_p }}
+			<input type="submit">
+		</form>
+	</div>
+</section>
 	
-{% endblock includejs %}
+{% endblock content %}
+{% block js %}
+	
+{% endblock js %}
