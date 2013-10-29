@@ -1,6 +1,5 @@
 #encoding:utf-8
 from django.db import models
-from django.contrib.auth.models import User
 
 MARITAL_STATUS_CHOICES = (
     ('n', 'Seleccione su estado civil'),
@@ -16,24 +15,18 @@ SCHEDULE_CHOICES = (
     (3, 'Noche'),
 )
 
-NUMBER_CHOICE =(
+NUMBER_CHOICE = (
     ('-1', '¿Tienes Hijos?'),
-    (1,'0'),
-    (1,'1'),
-    (2,'3'),
-    (4,'4'),
-    (5,'5'),
-    (6,'6'),
-    (7,'7'),
-    (8,'8'),
-    (9,'9'),
+    (1, '0'),
+    (1, '1'),
+    (2, '3'),
+    (4, '4'),
+    (5, '5'),
+    (6, '6'),
+    (7, '7'),
+    (8, '8'),
+    (9, '9'),
 )
-
-User.add_to_class('ci', models.PositiveIntegerField(unique=True,
-                                                    default=0,
-                                                    max_length=10))
-User.add_to_class('mobile_phone', models.CharField(max_length=12))
-User.add_to_class('address', models.TextField())
 
 
 class PromoterType(models.Model):
@@ -66,12 +59,14 @@ class Promoter(models.Model):
     pin = models.CharField('Blackberry PIN', max_length=8, blank=True, null=True)
     description = models.TextField(blank=True, null=True)
     rol = models.ManyToManyField(PromoterType, verbose_name=u'Tipo de promotor')
-    num_children = models.SmallIntegerField('Numero de Hijos', 
-                                            choices=NUMBER_CHOICE, default=NUMBER_CHOICE[0])
+    num_children = models.SmallIntegerField('Numero de Hijos',
+                                            choices=NUMBER_CHOICE,
+                                            default=NUMBER_CHOICE[0])
     studying = models.BooleanField('¿Estudias?')
     study_schedule = models.SmallIntegerField('Turno de estudio',
                                               max_length=1,
-                                              choices=SCHEDULE_CHOICES, default=SCHEDULE_CHOICES[0])
+                                              choices=SCHEDULE_CHOICES,
+                                              default=SCHEDULE_CHOICES[0])
 
 
 class PromoterPhotos(models.Model):

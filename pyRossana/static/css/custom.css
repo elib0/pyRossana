@@ -50,6 +50,9 @@ header h5 ~ p{margin-top:-1.25px}
 header h6 ~ p{margin-top:-1.25px}
 }
 *{background:rgba(0,0,0,0.05) url("../img/edit_mixin.png")}
+.ui-widget-header{border:none;color:#000;background:#fff !important}
+.ui-corner-all{border-radius:0}
+.ui-widget-content{background:#fff}
 input[type=search]{width:30em;text-align:right}
 body > header{position:absolute;top:0;left:0;padding:0 1em;height:40px;width:100%;}
 body > header > div{height:inherit}
@@ -57,7 +60,7 @@ body > header > div.profile-nav{float:left;width:20.594713656387665%;margin-left
 body > header > div.profile-nav:last-child{margin-right:0%}
 body > header > div.link-nav{float:left;width:47.06314243759177%;margin-left:26.46842878120411%;margin-right:5.873715124816447%;text-align:right}
 body > header > div.link-nav:last-child{margin-right:0%}
-section{width:100%;height:100%;padding-top:40px;overflow:hidden}
+section{width:100%;height:100%;padding-top:40px;overflow:hidden;min-height:35em}
 .page-wrapper{width:auto;max-width:1080px;float:none;display:block;margin-right:auto;margin-left:auto;padding-left:15px;padding-right:15px}
 ul.horizontal-menu{list-style:none;}
 ul.horizontal-menu li{float:left}
@@ -70,6 +73,7 @@ ul.horizontal-menu li{float:left}
 .about-us .social{float:left;width:48.5%;margin-left:51.5%;margin-right:3%;text-align:right}
 .about-us .social:last-child{margin-right:0%}
 .about-us footer{width:auto;max-width:600px;float:none;display:block;margin-right:auto;margin-left:auto;padding-left:15px;padding-right:15px;text-align:center}
+.product-list h1{text-align:center}
 .product-list form{text-align:right;padding:.8em}
 .product-list aside{float:left;width:33.33333333333333%;margin-left:0%;margin-right:0%;}
 .product-list aside h2{text-decoration:underline}

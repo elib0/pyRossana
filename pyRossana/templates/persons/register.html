@@ -3,12 +3,90 @@
 {% block content %}
 <section class="register">
 	<div class="page-wrapper">
-		<form action="#" method="POST">{% csrf_token %}
-			{{ form.as_p }}
+		<h1>Registro de usuario</h1>
+		<p>
+			Podras disfrutas de todos nuestros beneficios como usuarios registrado
+			incluyendo nuestro sistema de Presupuestos en linea.
+		</p>
+		<form action="{% url 'person:register' %}" method="POST" id="frmRegister">{% csrf_token %}
+			<p>
+				{% if form.password.errors %}
+				<h6>{{ form.password.errors }}</h6>	
+				{% endif %}
+				{{ form.password.label_tag }}:{{ form.password }}
+				{% if form.password.message %}
+				<h6>{{ form.password.message }}</h6>	
+				{% endif %}
+
+				{% if form.repassword.errors %}
+				<h6>{{ form.repassword.errors }}</h6>	
+				{% endif %}
+				{{ form.repassword.label_tag }}:{{ form.repassword }}
+				{% if form.repassword.message %}
+				<h6>{{ form.repassword.message }}</h6>	
+				{% endif %}
+			</p>
+			<p>
+				{% if form.username.errors %}
+				<div class="ui-state-error ui-corner-all" style="padding: 0 .7em;">
+					<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+					<strong>{{ form.username.errors }}</p>
+				</div>
+				{% endif %}
+				{{ form.username.label_tag }}:{{ form.username }}
+				{% if form.username.message %}
+				<h6>{{ form.username.message }}</h6>	
+				{% endif %}
+			</p>
+			<p>
+				{% if form.email.errors %}
+				<h6>{{ form.email.errors }}</h6>	
+				{% endif %}
+				{{ form.email.label_tag }}:{{ form.email }}
+				{% if form.email.message %}
+				<h6>{{ form.email.message }}</h6>	
+				{% endif %}
+			</p>
+			<input type="button" id="btnBack" value="Volver">
 			<input type="reset">
 			<input type="submit">
 		</form>
 	</div>
 </section>
 {% endblock content %}
-{% block includejs %}{% endblock includejs %}
+{% block js %}
+<script>
+	$('#btnBack').click(function(){
+		window.location = '{% url 'home' %}';
+	});
+
+	$('#frmRegister').submit(function(){
+		var form = this;
+		$.ajax({
+			url: form.action,
+			type: form.method,
+			data: $(form).serialize(),
+		}).done(function(data) {
+			if (data.success == 1) {
+				btns = [{
+						text: "Aceptar",
+						click: function() {
+							$( this ).dialog( "close" );
+							window.location = '{% url 'person:login' %}';
+						}
+					}];
+				showDialog(data.message, true, btns);
+			}
+		}).fail(function() {
+			btns = [{
+						text: "Volver",
+						click: function() {
+							$( this ).dialog( "close" );
+						}
+					}];
+				showDialog(data.message, true, btns);
+		});
+		return false;
+	});
+</script>
+{% endblock js %}

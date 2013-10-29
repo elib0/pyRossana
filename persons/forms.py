@@ -5,11 +5,11 @@ from persons.models import Promoter
 
 
 class LoginForm(forms.Form):
-    name = forms.CharField(max_length=30, 
-                           min_length=5, 
-                           required=True, 
+    name = forms.CharField(max_length=30,
+                           min_length=5,
+                           required=True,
                            label='Nombre',
-                           widget=forms.TextInput(attrs={'placeholder':'Ej: JohnDoe'}))
+                           widget=forms.TextInput(attrs={'placeholder': 'Ej: JohnDoe'}))
     password = forms.CharField(widget=forms.PasswordInput(),
                                label='Contraseña',
                                required=True,
@@ -19,32 +19,34 @@ class LoginForm(forms.Form):
 class RegisterForm(forms.ModelForm):
     class Meta:
         model = User
-        exclude = ('last_login',
-                   'is_superuser',
-                   'groups',
-                   'user_permissions',
-                   'is_staff',
-                   'is_active',
-                   'date_joined',)
-    ci = forms.IntegerField(max_value=9, min_value=8, label='Cedula')
+        fields = ['username', 'password', 'email']
+        widgets = {
+            'username': forms.TextInput(attrs={'placeholder': 'Ej: john'}),
+            'email': forms.TextInput(attrs={'placeholder': 'Ej: johndoe@example.com'}),
+        }
+    password = forms.CharField(max_length=20,
+                               min_length=6,
+                               widget=forms.PasswordInput(),
+                               label='Contraseña',
+                               required=True)
     repassword = forms.CharField(widget=forms.PasswordInput(),
                                  label='Repite Contraseña',
                                  required=True,
                                  max_length=30, min_length=6)
 
     def clean(self):
-        cleaned_data = super(PersonForm, self).clean()
+        cleaned_data = super(RegisterForm, self).clean()
         password = cleaned_data.get('password')
         repassword = cleaned_data.get('repassword')
         if password != repassword:
-            raise forms.ValidationError("Las Contraseñas no son iguales")
+            raise forms.ValidationError("Las contrasenas no son iguales")
         return cleaned_data
 
 
 class PromoterForm(forms.ModelForm):
     class Meta:
         model = Promoter
-        widgets ={
+        widgets = {
             'ci': forms.TextInput(attrs={'placeholder': 'Ej: 55555'}),
             'first_name': forms.TextInput(attrs={'placeholder': 'Ej: John'}),
             'last_name': forms.TextInput(attrs={'placeholder': 'Ej: Doe'}),

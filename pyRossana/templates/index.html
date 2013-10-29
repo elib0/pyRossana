@@ -12,6 +12,7 @@
         <meta name="viewport" content="width=device-width">
         {% load staticfiles %}
         <link rel="stylesheet" href="{% static "css/onepage-scroll.css" %}">
+        <link rel="stylesheet" href="{% static "css/jqueryui/main.css" %}">
         <link rel="stylesheet" href="{% static "css/custom.css" %}">
         <!--[if lt IE 9]><script src="{% static "js/vendor/selectivizr-1.0.2.min.js" %}"></script><![endif]-->
         <script src="{% static "js/vendor/selectivizr-1.0.2.min.js" %}"></script>
@@ -20,6 +21,7 @@
         <!--[if lt IE 9]>
             <div class="browsehappy"><p>You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/" target="_blank">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true" target="_blank">activate Google Chrome Frame</a> to improve your experience.</p></div>
         <![endif]-->
+        {% block dialog %}<div id="dialog" title="Info"></div>{% endblock dialog %}
 		<div class="content">
 		{% block content %}
 			{% include "partial/about.html" %}
@@ -33,9 +35,9 @@
                 Bienvendio:
                 {% if user.is_authenticated %}
                     {% if user.first_name and user.last_name %}
-                        {{ user.last_name }}. {{ user.first_name }}. 
+                        <a href="#">{{ user.last_name }}. {{ user.first_name }}. </a>
                     {% else %}
-                        {{ user.username }}
+                        <a href="#">{{ user.username }}</a>
                     {% endif %}
                 {% else %}
                     Anonimo
@@ -66,9 +68,17 @@
             <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
             <script>window.jQuery || document.write('<script src="{% static "js/vendor/jquery-2.0.3.min.js" %}"><\/script>')</script>
         <!--<![endif]-->
-        {% block includejs %}
+        <script src="{% static "js/vendor/jquery-ui.min.js" %}"></script>
         <script src="{% static "js/main.js" %}"></script>
+        {% block js %}
         <script src="{% static "js/vendor/jquery.onepage-scroll.min.js" %}"></script>
-        {% endblock includejs %}        
+        <script>
+            $(function() {
+                $(".content").onepage_scroll({
+                    sectionContainer: "section"
+                });    
+            });
+        </script>
+        {% endblock js %}       
     </body>
 </html>

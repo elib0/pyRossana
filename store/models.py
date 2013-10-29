@@ -9,6 +9,16 @@ STATUS_CHOICES = (
 )
 
 
+class Buyer(models.Model):
+    def __str__(self):
+        return self.name
+
+    user = models.ForeignKey(User)
+    dni = models.PositiveIntegerField(max_length=9)
+    phone = models.CharField(max_length=12)
+    address = models.TextField()
+
+
 class Categorie(models.Model):
     def __str__(self):
         return self.name

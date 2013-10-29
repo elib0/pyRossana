@@ -1,6 +1,10 @@
+#encoding:utf-8
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 import persons.forms as personform
+from django.contrib.auth.models import User
+from django.utils import simplejson
+from django.http import HttpResponse
 
 
 def loginuser(request):
@@ -14,7 +18,8 @@ def loginuser(request):
                 if u.is_active:
                     login(request, u)
                 else:
-                    msj = 'lo sentimos este usuario no se encuntra disponible'
+                    # msj = 'lo sentimos este usuario no se encuntra disponible'
+                    pass
                 return redirect('/')
             else:
                 return redirect('person/login.html')
@@ -24,13 +29,26 @@ def loginuser(request):
 
 
 def registeruser(request):
-    if request.method == 'POST':
-        pass
+    if request.is_ajax() and request.method == 'POST':
+        result = {'success': -1, 'message': 'Error desconocido'}
+        form = personform.RegisterForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            email = form.cleaned_data['email']
+            password = form.cleaned_data['password']
+            u = User.objects.create_user(username, email, password)
+            try:
+                u.save()
+                result['success'] = 1
+                result['message'] = '¡Usuario creado correctamente!'
+            except:
+                result['success'] = 0
+                result['message'] = 'Ah ocurrido un error al intentar crear el usuario!'
+            json = simplejson.dumps(result)
+            return HttpResponse(json, mimetype='application/json')
     else:
         form = personform.RegisterForm()
     return render(request, 'persons/register.html', {'form': form})
-
-
 
 
 def logoutuser(request):
