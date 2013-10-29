@@ -1,0 +1,14 @@
+{% extends "index.html" %}
+
+{% block content %}
+<section class="register">
+	<div class="page-wrapper">
+		<form action="#" method="POST">{% csrf_token %}
+			{{ form.as_p }}
+			<input type="reset">
+			<input type="submit">
+		</form>
+	</div>
+</section>
+{% endblock content %}
+{% block includejs %}{% endblock includejs %}
