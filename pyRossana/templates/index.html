@@ -20,17 +20,25 @@
         <!--[if lt IE 9]>
             <div class="browsehappy"><p>You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/" target="_blank">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true" target="_blank">activate Google Chrome Frame</a> to improve your experience.</p></div>
         <![endif]-->
+		<div class="content">
+		{% block content %}
+			{% include "partial/about.html" %}
+			{% include "store/index.html" %}
+			{% include "persons/register_promoter.html" %}
+            {% include "gallery/index.html" %}
+		{% endblock content %}
+		</div>
         <header>
-    		<div class="profile-nav">
+            <div class="profile-nav">
                 Bienvendio:
                 {% if user.is_authenticated %}
-                	{% if user.first_name and user.last_name %}
-                		{{ user.last_name }}. {{ user.first_name }}. 
-                	{% else %}
-                		{{ user.username }}
-                	{% endif %}
+                    {% if user.first_name and user.last_name %}
+                        {{ user.last_name }}. {{ user.first_name }}. 
+                    {% else %}
+                        {{ user.username }}
+                    {% endif %}
                 {% else %}
-	                Anonimo
+                    Anonimo
                 {% endif %}
             </div>
             <div class="link-nav">
@@ -41,47 +49,7 @@
                     <a href="#">¡Registrate!</a>
                 {% endif %}
             </div>
-    	</header>
-{% comment %}
-            <form action="#" method="POST" id="frmPromoter">{% csrf_token %}
-            <br><br>
-            {{ form2 }}
-            <p>
-                {{ form1.username.errors }}
-                {{ form1.username.label_tag }} : {{ form1.username }}
-            </p>
-            <p>
-                {{ form1.password.errors }}
-                {{ form1.password.label_tag }} : {{ form1.password }}
-                {{ form1.repassword.errors }}
-                {{ form1.repassword.label_tag }} : {{ form1.repassword }}
-            </p>
-            <p>
-                {{ form1.first_name.errors }}
-                {{ form1.first_name.label_tag }} : {{ form1.first_name }}
-                {{ form1.last_name.errors }}
-                {{ form1.last_name.label_tag }} : {{ form1.last_name }}
-            </p>
-            <p>
-                {{ form1.ci.errors }}
-                {{ form1.ci.label_tag }} : {{ form1.ci }}
-            </p>
-            <p>
-                {{ form1.email.errors }}
-                {{ form1.email.label_tag }} : {{ form1.email }}
-            </p>
-            <input type="reset">
-            <input type="submit">
-        </form>
-{% endcomment %}
-		<div class="content">
-		{% block content %}
-			{% include "partial/about.html" %}
-			{% include "store/index.html" %}
-			{% include "persons/register_promoter.html" %}
-            {% include "gallery/index.html" %}
-		{% endblock content %}
-		</div>
+        </header>
         <footer>
         {% block footer %}
         	Creado con jeet por elibo.

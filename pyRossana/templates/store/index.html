@@ -1,25 +1,37 @@
 <section class="product-list">
 	<div class="page-wrapper">
-	{% for product in products %}
-		<article>
-		    <header>
-		        <h1>{{ product.name }}</h1>
-		    </header>
-		    <p>
+		<h1>Nuestros Servicios</h1>
+		<form action="#" id="frmSearch" name="frmSearch" method="POST">{% csrf_token %}
+			<input type="search" placeholder="Introduzca su criterio de busqueda">
+			<input type="submit">
+		</form>
+		<aside>
+			<h4>Categorias</h4>
+			<ul>
+				<li><h5>Categorias</h5></li>
+			</ul>
+		</aside>
+		<div class="products">
+			{% for product in products %}
+			<article>
+			    <header>
+			        <h1>{{ product.name }}</h1>
+			    </header>
 		    	{% for img in product.productphoto_set.all %}
 		    		{% if forloop.first %}
 		    			<img src="{{ MEDIA_URL }}{{ img.photo }}" alt="{{ product.name }}"><br>
 		    		{% endif %}
 		    	{% endfor %}	                    	
-		        {{ product.details }}
-		    </p>
-		    <footer>Categoria:{{ product.sub_categorie }}</footer>
-		</article>
-	{% empty %}
-		<h1>No hay servicios disponibles actualmente</h1>
-	{% endfor %}
-		<div class="shopping-cart">
-	        Productos en el carrito:<span>{{ num }}</span>
-	    </div>
+		    	<footer>Categoria:{{ product.categorie }}</footer>
+			</article>
+			{% empty %}
+			<h1>No hay servicios disponibles actualmente</h1>
+			{% endfor %}
+		</div>
+		<footer>
+	        Productos en el carrito:<span>{{ num }}</span><br>
+	        <a href="#">Procesar</a>
+	        <a href="#">Vaciar carrito</a>
+	    </footer>
 	</div>
 </section>

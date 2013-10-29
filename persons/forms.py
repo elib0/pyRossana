@@ -12,7 +12,7 @@ class LoginForm(forms.Form):
                                max_length=30, min_length=6)
 
 
-class PersonForm(forms.ModelForm):
+class RegisterForm(forms.ModelForm):
     class Meta:
         model = User
         exclude = ('last_login',
@@ -40,4 +40,3 @@ class PersonForm(forms.ModelForm):
 class PromoterForm(forms.ModelForm):
     class Meta:
         model = Promoter
-        exclude = ('user',)

@@ -1,6 +1,6 @@
-body,.cf,.browsehappy p,body > header > div.profile-nav,body > header > div.link-nav,.page-wrapper,.page-wrapper > article{*zoom:1;}
-body:before,.cf:before,.browsehappy p:before,body > header > div.profile-nav:before,body > header > div.link-nav:before,.page-wrapper:before,.page-wrapper > article:before,body:after,.cf:after,.browsehappy p:after,body > header > div.profile-nav:after,body > header > div.link-nav:after,.page-wrapper:after,.page-wrapper > article:after{content:'';display:table}
-body:after,.cf:after,.browsehappy p:after,body > header > div.profile-nav:after,body > header > div.link-nav:after,.page-wrapper:after,.page-wrapper > article:after{clear:both}
+body,.cf,.browsehappy p,body > header > div.profile-nav,body > header > div.link-nav,.page-wrapper,.about-us .content,.about-us .social,.about-us footer,.product-list aside,.product-list .products,.product-list .products article,.product-list .page-wrapper > footer,.register-promoter .personal-info,.register-promoter .aditional-info,.register-promoter .photos,.register-promoter .personal-info ul.horizontal-menu li,.register-promoter .aditional-info ul.horizontal-menu li,.register-promoter .photos ul.horizontal-menu li{*zoom:1;}
+body:before,.cf:before,.browsehappy p:before,body > header > div.profile-nav:before,body > header > div.link-nav:before,.page-wrapper:before,.about-us .content:before,.about-us .social:before,.about-us footer:before,.product-list aside:before,.product-list .products:before,.product-list .products article:before,.product-list .page-wrapper > footer:before,.register-promoter .personal-info:before,.register-promoter .aditional-info:before,.register-promoter .photos:before,.register-promoter .personal-info ul.horizontal-menu li:before,.register-promoter .aditional-info ul.horizontal-menu li:before,.register-promoter .photos ul.horizontal-menu li:before,body:after,.cf:after,.browsehappy p:after,body > header > div.profile-nav:after,body > header > div.link-nav:after,.page-wrapper:after,.about-us .content:after,.about-us .social:after,.about-us footer:after,.product-list aside:after,.product-list .products:after,.product-list .products article:after,.product-list .page-wrapper > footer:after,.register-promoter .personal-info:after,.register-promoter .aditional-info:after,.register-promoter .photos:after,.register-promoter .personal-info ul.horizontal-menu li:after,.register-promoter .aditional-info ul.horizontal-menu li:after,.register-promoter .photos ul.horizontal-menu li:after{content:'';display:table}
+body:after,.cf:after,.browsehappy p:after,body > header > div.profile-nav:after,body > header > div.link-nav:after,.page-wrapper:after,.about-us .content:after,.about-us .social:after,.about-us footer:after,.product-list aside:after,.product-list .products:after,.product-list .products article:after,.product-list .page-wrapper > footer:after,.register-promoter .personal-info:after,.register-promoter .aditional-info:after,.register-promoter .photos:after,.register-promoter .personal-info ul.horizontal-menu li:after,.register-promoter .aditional-info ul.horizontal-menu li:after,.register-promoter .photos ul.horizontal-menu li:after{clear:both}
 *,*:before,*:after,*::before,*::after{box-sizing:border-box;*behavior:url("js/vendor/boxsizing.htc");margin:0;padding:0}
 html{overflow-y:scroll;overflow-x:hidden}
 body{width:100%}
@@ -50,16 +50,38 @@ header h5 ~ p{margin-top:-1.25px}
 header h6 ~ p{margin-top:-1.25px}
 }
 *{background:rgba(0,0,0,0.05) url("../img/edit_mixin.png")}
-body > header{padding:0 1em;height:40px;}
+body > header{position:absolute;top:0;left:0;padding:0 1em;height:40px;width:100%;}
 body > header > div{height:inherit}
 body > header > div.profile-nav{float:left;width:20.594713656387665%;margin-left:0%;margin-right:5.873715124816447%;}
 body > header > div.profile-nav:last-child{margin-right:0%}
 body > header > div.link-nav{float:left;width:47.06314243759177%;margin-left:26.46842878120411%;margin-right:5.873715124816447%;text-align:right}
 body > header > div.link-nav:last-child{margin-right:0%}
-section{width:100%;height:100%}
-.page-wrapper{width:auto;max-width:1080px;float:none;display:block;margin-right:auto;margin-left:auto;padding-left:15px;padding-right:15px;}
-.page-wrapper > article{float:left;width:29.209621993127143%;margin-left:0%;margin-right:6.185567010309279%;margin-top:1em;}
-.page-wrapper > article:nth-child(3n){margin-right:0%;float:right}
-.page-wrapper > article header h1{text-align:center}
+section{width:100%;height:100%;padding-top:40px}
+.page-wrapper{width:auto;max-width:1080px;float:none;display:block;margin-right:auto;margin-left:auto;padding-left:15px;padding-right:15px}
+ul.horizontal-menu{list-style:none;}
+ul.horizontal-menu li{float:left}
+.about-us{color:#fff;}
+.about-us .content{float:left;width:74.25%;margin-left:25.75%;margin-right:3%;}
+.about-us .content h1{margin-top:1em;color:#fff;font-weight:bold}
+.about-us .content:last-child{margin-right:0%}
+.about-us .content article.mision{text-align:center}
+.about-us .content article.view{text-align:right}
+.about-us .social{float:left;width:48.5%;margin-left:51.5%;margin-right:3%;text-align:right}
+.about-us .social:last-child{margin-right:0%}
+.about-us footer{width:auto;max-width:600px;float:none;display:block;margin-right:auto;margin-left:auto;padding-left:15px;padding-right:15px;text-align:center}
+.product-list form{text-align:right;padding:.8em}
+.product-list aside{float:left;width:33.33333333333333%;margin-left:0%;margin-right:0%;}
+.product-list aside h2{text-decoration:underline}
+.product-list .products{float:left;width:66.66666666666666%;margin-left:0%;margin-right:0%;}
+.product-list .products article{float:left;width:33.33333333333333%;margin-left:0%;margin-right:0%;float:left;width:31.33333333333333%;margin-left:0%;margin-right:3%;background-color:#fff;min-height:354px;}
+.product-list .products article header h1{font-size:13px;margin:0}
+.product-list .products article:nth-child(3n){margin-right:0%;float:right}
+.product-list .products article header h1{text-align:center}
+.product-list .page-wrapper > footer{float:left;width:48.5%;margin-left:51.5%;margin-right:3%;text-align:right}
+.product-list .page-wrapper > footer:last-child{margin-right:0%}
+.register-promoter form input,.register-promoter form select{margin-right:20px}
+.register-promoter .personal-info,.register-promoter .aditional-info,.register-promoter .photos{width:auto;max-width:800px;float:none;display:block;margin-right:auto;margin-left:auto;padding-left:15px;padding-right:15px;background-color:#fff;margin-top:1em;text-align:center;}
+.register-promoter .personal-info ul.horizontal-menu li,.register-promoter .aditional-info ul.horizontal-menu li,.register-promoter .photos ul.horizontal-menu li{float:left;width:48.5%;margin-left:0%;margin-right:3%;min-height:100px}
+.register-promoter .personal-info ul.horizontal-menu li:last-child,.register-promoter .aditional-info ul.horizontal-menu li:last-child,.register-promoter .photos ul.horizontal-menu li:last-child{margin-right:0%}
 @media all and (max-width: 705px) {
 }
