@@ -76,7 +76,11 @@
             $(function() {
                 //Navegacion
                 $(".content").onepage_scroll({
-                    sectionContainer: "section"
+                    sectionContainer: "section",
+                    updateURL: true,
+                    afterMove: function(index) {
+                        // $('input').first().focus();
+                    }
                 });
             });
         </script>

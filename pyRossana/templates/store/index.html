@@ -33,9 +33,15 @@
 			{% endfor %}
 		</div>
 		<footer>
-	        Productos en el carrito:<span>{{ num }}</span><br>
-	        <a href="#">Procesar</a>
-	        <a href="#">Vaciar carrito</a>
+			{% load staticfiles %}
+			<ul>
+				<li><img src="{% static "img/cart.png" %}" alt=""></li>
+		        <li>
+		        	Productos en el carrito:<span>{{ num }}</span><br>
+		        	<a href="#">Procesar</a>
+		        	<a href="#">Vaciar carrito</a>
+		        </li>
+			</ul>
 	    </footer>
 	</div>
 </section>

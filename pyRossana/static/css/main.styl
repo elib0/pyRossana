@@ -78,18 +78,18 @@ ul.horizontal-menu
 
 /*Secciones de la pagina*/
 .about-us
-	background: url(../img/bg1.jpg) center center no-repeat
+	background: #100604 url(../img/bg1.jpg) center center no-repeat
 	color: #FFF
 	font-size 14px
 	img.logo
 		margin-left: 30%;
+		width 38%
 	h6
 		display: inline-block;
 		font-size: 2em;
 		color #FFF
 	.content
 		h1
-			margin-top 0.6em
 			color #FFF
 			font-weight: bold
 		col(3/4, offset: 1/4)
@@ -134,18 +134,40 @@ ul.horizontal-menu
 				text-align: center
 	.page-wrapper > footer
 		col(4/8, offset: 4/8)
+		min-height 72px
+		font-family special_font
+		font-weight bold
 		text-align: right
+		color #FFF
+		ul
+			list-style none
+			li
+				float left
+				width 50%
 
 .register-promoter
 	background: url(../img/bg3.jpg)
 	form
 		input, select
 			margin-right: 20px
+		p
+			margin-bottom 5px
+	ul
+		list-style none
+		margin 0
+		padding 0
+		li
+			float left
+			margin 0
+			padding 0
+		li.lefty
+			col(2/3)
+		li.righty
+			col(1/3)
 	.personal-info, .aditional-info, .photos
-		center(800px)
 		background-color: #FFF
 		margin-top: 1em
-		padding 2em
+		padding 1em
 		text-align: center
 		border 3px solid #FFF
 		-webkit-border-radius 10px
@@ -160,9 +182,10 @@ ul.horizontal-menu
 		border-color #3efc39
 	.photos
 		border-color #ff9500
+		margin-bottom 1em
 
 .photo-gallery
-	background: url(../img/bg4.jpg) top center no-repeat
+	background: #EB936B url(../img/bg4.jpg) top center no-repeat
 	h1
 		text-align: center
 
