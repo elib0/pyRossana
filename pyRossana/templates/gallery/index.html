@@ -1,5 +1,15 @@
 <section class="photo-gallery">
 	<div class="page-wrapper">
-		Galeria de imagenes
+		<h1>Galería de Fotos</h1>
+		<div class="photos">
+			{% for picture in gallery.picture_set %}
+			<article>
+		  		{{ picture.title }}
+			</article>
+			{% empty %}
+			<h1>No hay álbum de fotos en este momento</h1>
+			{% endfor %}
+			{{ gallery.name }}
+		</div>
 	</div>
 </section>

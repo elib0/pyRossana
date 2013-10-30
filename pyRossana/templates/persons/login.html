@@ -3,11 +3,22 @@
 {% block content %}
 <section class="register">
 	<div class="page-wrapper">
+		<h1>Identificarte</h1>
+		<p>
+			De esta manera podremos prestarte un mejor servicio, así como también guardar tus preferencias en la pagina
+		</p>
 		<form action="{% url 'person:login' %}" method="POST">{% csrf_token %}
 			{{ form.as_p }}
+			<input type="button" id="btnBack" value="Volver">
 			<input type="submit">
 		</form>
 	</div>
 </section>
 {% endblock content %}
-{% block js %}{% endblock js %}
+{% block js %}
+<script>
+	$('#btnBack').click(function(){
+		window.location = '{% url 'home' %}';
+	});
+</script>
+{% endblock js %}
