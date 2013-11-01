@@ -90,10 +90,11 @@ ul.horizontal-menu li{float:left}
 .product-list aside{float:left;width:33.33333333333333%;margin-left:0%;margin-right:0%;min-height:314px;background:url("../img/categories-bg.png") no-repeat;}
 .product-list aside h2{text-decoration:underline}
 .product-list .products{float:left;width:66.66666666666666%;margin-left:0%;margin-right:0%;}
-.product-list .products article{float:left;width:33.33333333333333%;margin-left:0%;margin-right:0%;float:left;width:31.33333333333333%;margin-left:0%;margin-right:3%;background-color:#fff;min-height:354px;}
+.product-list .products article{float:left;width:33.33333333333333%;margin-left:0%;margin-right:0%;text-align:center;float:left;width:31.33333333333333%;margin-left:0%;margin-right:3%;background-color:#fff;min-height:290px;}
 .product-list .products article header h1{font-size:18px;margin:0}
 .product-list .products article:nth-child(3n){margin-right:0%;float:right}
 .product-list .products article header h1{text-align:center}
+.product-list .products article img{min-width:40%;height:210px;max-width:218px}
 .product-list .page-wrapper > footer{float:left;width:48.5%;margin-left:51.5%;margin-right:3%;min-height:72px;font-family:'Open Sans Condensed',sans-serif;font-weight:bold;text-align:right;color:#fff;}
 .product-list .page-wrapper > footer:last-child{margin-right:0%}
 .product-list .page-wrapper > footer ul{list-style:none;}
