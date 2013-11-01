@@ -55,3 +55,11 @@ def logoutuser(request):
     if request.user.is_authenticated():
         logout(request)
     return redirect('home')
+
+
+def registerpromoter(request):
+    if request.method == 'POST':
+        form = personform.PromoterForm(request.POST)
+        if form.is_valid():
+            pass
+
