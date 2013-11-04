@@ -1,84 +1,95 @@
-<section class="register-promoter">
-	<div class="page-wrapper">
-		<h1>Casting Online</h1>
-		<form action="{% url 'person:registerprom' %}" method="POST">{% csrf_token %}
-			<ul>
-				<li class="lefty">
-					<div class="personal-info">
-						<p>
-							{{ form.ci.label_tag }}:{{ form.ci }}
-					
-							{{ form.age.label_tag }}:{{ form.age }}
-						</p>
-						<p>
-							{{ form.first_name.label_tag }}:{{ form.first_name }}
-					
-							{{ form.last_name.label_tag }}:{{ form.last_name }}
-						</p>
-						<p>
-							{{ form.mobile_phone.label_tag }}:{{ form.mobile_phone }}
-					
-							{{ form.phone.label_tag }}:{{ form.phone }}
-						</p>
-						<p>
-							{{ form.address.label_tag }}:<br>{{ form.address }}
-						</p>
-					</div>
-					<div class="aditional-info">
-						<p>
-							{{ form.num_children }}
-					
-							{{ form.marital_status }}
-						</p>
-						<p>
-							{{ form.height.label_tag }}:{{ form.height }}
-					
-							{{ form.weight.label_tag }}:{{ form.weight }}
-						</p>
-						<p>
-							Medidas:
-							<label>Busto: <input name="measure1" type="number" min="40"  max="100" required="required"></label>
-							<label>Cintura: <input name="measure2" type="number" min="40" max="100" required="required"></label>
-							<label>Cadera: <input name="measure3" type="number" min="40" max="100" required="required"></label>
-						</p>
-						<p>
-							<ul class="horizontal-menu">
-								<li>
-									{{ form.rol.label_tag }}:<br>{{ form.rol }}
-								</li>
-								<li>
-									{{ form.studying.label_tag }}:{{ form.studying }}
-									<br>
-									{{ form.study_schedule.label_tag }}:<br>{{ form.study_schedule }}
-								</li>
-							</ul>
-						</p>
-						<p>
-							{{ form.pin.label_tag }}:{{ form.pin }}
-						</p>
-					</div>
-				</li>
-				<li class="righty">
-					<div class="photos">
-						{% load staticfiles %}
-						<img src="{% static "img/camera.png" %}" alt="Foto 1">
-						Foto 1 | Foto 2
-						<img src="{% static "img/camera.png" %}" alt="Foto 2">
-					</div>
-					<input type="reset">
-					<input type="submit" value="Registrar">
-					{% for field in form %}
-						{% if field.errors %}
-							<h6>{{ field.label }}:</h6>
-							<ul class="form-error">
-							{% for error in field.errors %}
-								<li>{{ error }}</li>	
-							{% endfor %}
-							</ul>
-						{% endif %}
-					{% endfor %}
-				</li>
-			</ul>
-		</form>
-	</div>
-</section>
+{% load staticfiles %}
+<div class="page-wrapper">
+	<h1>Casting Online</h1>
+	<form action="{% url 'person:promoter' %}" method="POST" id="frmPromoter">{% csrf_token %}
+		<ul>
+			<li class="lefty">
+				<div class="personal-info">
+					<p>
+						{{ form.ci.label_tag }}:{{ form.ci }}
+				
+						{{ form.age.label_tag }}:{{ form.age }}
+					</p>
+					<p>
+						{{ form.first_name.label_tag }}:{{ form.first_name }}
+				
+						{{ form.last_name.label_tag }}:{{ form.last_name }}
+					</p>
+					<p>
+						{{ form.mobile_phone.label_tag }}:{{ form.mobile_phone }}
+				
+						{{ form.phone.label_tag }}:{{ form.phone }}
+					</p>
+					<p>
+						{{ form.address.label_tag }}:<br>{{ form.address }}
+					</p>
+				</div>
+				<div class="aditional-info">
+					<p>
+						{{ form.num_children }}
+				
+						{{ form.marital_status }}
+					</p>
+					<p>
+						{{ form.height.label_tag }}:{{ form.height }}
+				
+						{{ form.weight.label_tag }}:{{ form.weight }}
+					</p>
+					<p>
+						Medidas:
+						<label>Busto: <input name="measure1" type="number" min="40"  max="100" required="required"></label>
+						<label>Cintura: <input name="measure2" type="number" min="40" max="100" required="required"></label>
+						<label>Cadera: <input name="measure3" type="number" min="40" max="100" required="required"></label>
+					</p>
+					<p>
+						<ul class="horizontal-menu">
+							<li>
+								{{ form.rol.label_tag }}:<br>{{ form.rol }}
+							</li>
+							<li>
+								{{ form.studying.label_tag }}:{{ form.studying }}
+								<br>
+								{{ form.study_schedule.label_tag }}:<br>{{ form.study_schedule }}
+							</li>
+						</ul>
+					</p>
+					<p>
+						{{ form.pin.label_tag }}:{{ form.pin }}
+					</p>
+				</div>
+			</li>
+			<li class="righty">
+				<div class="photos">
+					<img src="{% static "img/camera.png" %}" alt="Foto 1">
+					Foto 1 | Foto 2
+					<img src="{% static "img/camera.png" %}" alt="Foto 2">
+				</div>
+				<input type="reset">
+				<input type="submit" value="Registrar">
+				{% for field in form %}
+					{% if field.errors %}
+						<h6 class="error-title">{{ field.label }}:</h6>
+						<ul class="form-error">
+						{% for error in field.errors %}
+							<li>{{ error }}</li>	
+						{% endfor %}
+						</ul>
+					{% endif %}
+				{% endfor %}
+			</li>
+		</ul>
+	</form>
+</div>
+<script>
+	$('#frmPromoter').submit(function(){
+		var form = this;
+		$.ajax({
+			url: form.action,
+			type: form.method,
+			data: $(form).serialize(),
+		}).done(function(data) {
+			$( ".content section.register-promoter" ).html(data);
+		});
+		return false;
+	});
+</script>

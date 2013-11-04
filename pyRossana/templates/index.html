@@ -26,7 +26,7 @@
 		{% block content %}
 			{% include "partial/about.html" %}
 			{% include "store/index.html" %}
-			{% include "persons/register_promoter.html" %}
+            <section class="register-promoter"></section>
             {% include "gallery/index.html" %}
 		{% endblock content %}
 		</div>
@@ -74,14 +74,14 @@
         <script src="{% static "js/vendor/jquery.onepage-scroll.min.js" %}"></script>
         <script>
             $(function() {
-                //Navegacion
-                $(".content").onepage_scroll({
-                    sectionContainer: "section",
-                    updateURL: true,
-                    afterMove: function(index) {
-                        // $('input').first().focus();
-                    }
+                //Cara de secciones dinamicas
+                $( ".content section.register-promoter" ).load('{% url 'person:promoter' %}', function(){
+                    $(".content").onepage_scroll({
+                        sectionContainer: "section",
+                        updateURL: true
+                    });
                 });
+                
             });
         </script>
         {% endblock js %}       

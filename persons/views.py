@@ -59,14 +59,11 @@ def logoutuser(request):
 
 
 def registerpromoter(request):
-    if request.method == 'POST':
-        form = personform.PromoterForm(request.POST)
-        if form.is_valid():
-            form.save()
+    if request.is_ajax():
+        if request.method == 'POST':
+            form = personform.PromoterForm(request.POST)
+            if form.is_valid():
+                form.save()
         else:
-            pass
-    else:
-        form = personform.PromoterForm()
-    return render(request, 'index.html', {'form': form})
-
-
+            form = personform.PromoterForm()
+        return render(request, 'persons/register_promoter.html', {'form': form})
