@@ -61,6 +61,7 @@ input[type=button]:hover,input[type=reset]:hover,input[type=submit]:hover{color:
 input[type=button]:active,input[type=reset]:active,input[type=submit]:active{position:relative;top:1px}
 input[type=search]{width:30em;text-align:right}
 input[type=text],input[type=search],input[type=number],input[type=password],select{margin-left:5px;height:2.2em;font-weight:bold}
+select[multiple=multiple]{height:3.8em}
 h1,h4,h5,h6,label{font-family:'Open Sans Condensed',sans-serif}
 label{font-weight:bold}
 body > header{background:url("../img/menu-bg.png");position:absolute;top:0;left:0;padding:0 1em;height:40px;width:100%;color:#fff;}
@@ -108,12 +109,15 @@ ul.horizontal-menu li{float:left}
 .register-promoter ul li.lefty:last-child{margin-right:0%}
 .register-promoter ul li.righty{float:left;width:31.33333333333333%;margin-left:0%;margin-right:3%;}
 .register-promoter ul li.righty:last-child{margin-right:0%}
+.register-promoter ul li.righty .photos{border-color:#ff9500;margin-bottom:1em;}
+.register-promoter ul li.righty .photos img{width:28%}
+.register-promoter ul li.righty ul.form-error{list-style:disc;}
+.register-promoter ul li.righty ul.form-error li{float:none;color:#b10000}
 .register-promoter .personal-info,.register-promoter .aditional-info,.register-promoter .photos{background-color:#fff;margin-top:1em;padding:1em;text-align:center;border:3px solid #fff;-webkit-border-radius:10px;-moz-border-radius:10px;border-radius:10px;}
 .register-promoter .personal-info ul.horizontal-menu li,.register-promoter .aditional-info ul.horizontal-menu li,.register-promoter .photos ul.horizontal-menu li{float:left;width:48.5%;margin-left:0%;margin-right:3%;min-height:100px}
 .register-promoter .personal-info ul.horizontal-menu li:last-child,.register-promoter .aditional-info ul.horizontal-menu li:last-child,.register-promoter .photos ul.horizontal-menu li:last-child{margin-right:0%}
 .register-promoter .personal-info{border-color:#0589ce}
 .register-promoter .aditional-info{border-color:#3efc39}
-.register-promoter .photos{border-color:#ff9500;margin-bottom:1em}
 .photo-gallery{background:#eb936b url("../img/bg4.jpg") top center no-repeat;}
 .photo-gallery h1{text-align:center}
 footer{text-align:center}

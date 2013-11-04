@@ -5,6 +5,7 @@ import persons.forms as personform
 from django.contrib.auth.models import User
 from django.utils import simplejson
 from django.http import HttpResponse
+from pyRossana.views import home
 
 
 def loginuser(request):
@@ -61,5 +62,11 @@ def registerpromoter(request):
     if request.method == 'POST':
         form = personform.PromoterForm(request.POST)
         if form.is_valid():
+            form.save()
+        else:
             pass
+    else:
+        form = personform.PromoterForm()
+    return render(request, 'index.html', {'form': form})
+
 

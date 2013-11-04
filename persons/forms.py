@@ -1,5 +1,6 @@
 #encoding:utf-8
 from django import forms
+from django.contrib.admin import widgets
 from django.contrib.auth.models import User
 from persons.models import Promoter
 
@@ -9,8 +10,9 @@ class LoginForm(forms.Form):
                            min_length=5,
                            required=True,
                            label='Nombre',
-                           widget=forms.TextInput(attrs={'placeholder': 'Ej: JohnDoe'}))
-    password = forms.CharField(widget=forms.PasswordInput(),
+                           widget=forms.TextInput(attrs={'placeholder': 'Ej: JohnDoe',
+                                                         'required': 'required'}))
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'required': 'required'}),
                                label='Contraseña',
                                required=True,
                                max_length=30, min_length=6)
@@ -21,15 +23,17 @@ class RegisterForm(forms.ModelForm):
         model = User
         fields = ['username', 'password', 'email']
         widgets = {
-            'username': forms.TextInput(attrs={'placeholder': 'Ej: john'}),
-            'email': forms.TextInput(attrs={'placeholder': 'Ej: johndoe@example.com'}),
+            'username': forms.TextInput(attrs={'placeholder': 'Ej: john',
+                                               'required': 'required'}),
+            'email': forms.TextInput(attrs={'placeholder': 'Ej: johndoe@example.com',
+                                            'required': 'required', 'type': 'email'}),
         }
     password = forms.CharField(max_length=20,
                                min_length=6,
-                               widget=forms.PasswordInput(),
+                               widget=forms.PasswordInput(attrs={'required': 'required'}),
                                label='Contraseña',
                                required=True)
-    repassword = forms.CharField(widget=forms.PasswordInput(),
+    repassword = forms.CharField(widget=forms.PasswordInput(attrs={'required': 'required'}),
                                  label='Repite Contraseña',
                                  required=True,
                                  max_length=30, min_length=6)
@@ -47,14 +51,21 @@ class PromoterForm(forms.ModelForm):
     class Meta:
         model = Promoter
         widgets = {
-            'ci': forms.TextInput(attrs={'placeholder': 'Ej: 55555'}),
-            'first_name': forms.TextInput(attrs={'placeholder': 'Ej: John'}),
-            'last_name': forms.TextInput(attrs={'placeholder': 'Ej: Doe'}),
-            'age': forms.TextInput(attrs={'placeholder': 'Ej: 55555'}),
-            'mobile_phone': forms.TextInput(attrs={'placeholder': 'Ej: 0414-4403333'}),
+            'ci': forms.TextInput(attrs={'placeholder': 'Ej: 55555',
+                                         'required': 'required'}),
+            'first_name': forms.TextInput(attrs={'placeholder': 'Ej: John',
+                                                 'required': 'required'}),
+            'last_name': forms.TextInput(attrs={'placeholder': 'Ej: Doe',
+                                                'required': 'required'}),
+            'age': widgets.AdminDateWidget(attrs={'placeholder': 'Ej: 02/12/1988'}),
+            'mobile_phone': forms.TextInput(attrs={'placeholder': 'Ej: 0414-4403333',
+                                                   'required': 'required'}),
             'phone': forms.TextInput(attrs={'placeholder': 'Ej: 0241-8885265'}),
-            'address': forms.TextInput(attrs={'placeholder': 'Ej: Trigal Norte'}),
-            'height': forms.TextInput(attrs={'placeholder': 'Ej: 1.80'}),
-            'weight': forms.TextInput(attrs={'placeholder': 'Ej: 80.1'}),
+            'address': forms.Textarea(attrs={'placeholder': 'Ej: Naguanagua',
+                                             'rows': '3'}),
+            'height': forms.TextInput(attrs={'placeholder': 'Ej: 1.80',
+                                             'required': 'required'}),
+            'weight': forms.TextInput(attrs={'placeholder': 'Ej: 80.1',
+                                             'required': 'required'}),
             'pin': forms.TextInput(attrs={'placeholder': 'Ej: 55555'}),
         }

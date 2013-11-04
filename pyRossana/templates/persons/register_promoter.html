@@ -6,159 +6,79 @@
 				<li class="lefty">
 					<div class="personal-info">
 						<p>
-							{% if form.ci.errors %}
-							<h6>{{ form.ci.errors }}</h6>	
-							{% endif %}
 							{{ form.ci.label_tag }}:{{ form.ci }}
-							{% if form.ci.message %}
-							<h6>{{ form.ci.message }}</h6>	
-							{% endif %}
 					
-							{% if form.age.errors %}
-							<h6>{{ form.age.errors }}</h6>	
-							{% endif %}
 							{{ form.age.label_tag }}:{{ form.age }}
-							{% if form.age.message %}
-							<h6>{{ form.age.message }}</h6>	
-							{% endif %}
 						</p>
 						<p>
-							{% if form.first_name.errors %}
-							<h6>{{ form.first_name.errors }}</h6>	
-							{% endif %}
 							{{ form.first_name.label_tag }}:{{ form.first_name }}
-							{% if form.first_name.message %}
-							<h6>{{ form.first_name.message }}</h6>	
-							{% endif %}
 					
-							{% if form.last_name.errors %}
-							<h6>{{ form.last_name.errors }}</h6>	
-							{% endif %}
 							{{ form.last_name.label_tag }}:{{ form.last_name }}
-							{% if form.last_name.message %}
-							<h6>{{ form.last_name.message }}</h6>	
-							{% endif %}
 						</p>
 						<p>
-							{% if form.mobile_phone.errors %}
-							<h6>{{ form.mobile_phone.errors }}</h6>	
-							{% endif %}
 							{{ form.mobile_phone.label_tag }}:{{ form.mobile_phone }}
-							{% if form.mobile_phone.message %}
-							<h6>{{ form.mobile_phone.message }}</h6>	
-							{% endif %}
 					
-							{% if form.phone.errors %}
-							<h6>{{ form.phone.errors }}</h6>	
-							{% endif %}
 							{{ form.phone.label_tag }}:{{ form.phone }}
-							{% if form.phone.message %}
-							<h6>{{ form.phone.message }}</h6>	
-							{% endif %}
 						</p>
 						<p>
-							{% if form.address.errors %}
-							<h6>{{ form.address.errors }}</h6>	
-							{% endif %}
 							{{ form.address.label_tag }}:<br>{{ form.address }}
-							{% if form.address.message %}
-							<h6>{{ form.address.message }}</h6>	
-							{% endif %}
 						</p>
 					</div>
 					<div class="aditional-info">
 						<p>
-							{% if form.num_children.errors %}
-							<h6>{{ form.num_children.errors }}</h6>	
-							{% endif %}
 							{{ form.num_children }}
-							{% if form.num_children.message %}
-							<h6>{{ form.num_children.message }}</h6>	
-							{% endif %}
 					
-							{% if form.age.errors %}
-							<h6>{{ form.age.errors }}</h6>	
-							{% endif %}
 							{{ form.marital_status }}
-							{% if form.marital_status.message %}
-							<h6>{{ form.marital_status.message }}</h6>	
-							{% endif %}
 						</p>
 						<p>
-							{% if form.height.errors %}
-							<h6>{{ form.height.errors }}</h6>	
-							{% endif %}
 							{{ form.height.label_tag }}:{{ form.height }}
-							{% if form.height.message %}
-							<h6>{{ form.height.message }}</h6>	
-							{% endif %}
 					
-							{% if form.weight.errors %}
-							<h6>{{ form.weight.errors }}</h6>	
-							{% endif %}
 							{{ form.weight.label_tag }}:{{ form.weight }}
-							{% if form.weight.message %}
-							<h6>{{ form.weight.message }}</h6>	
-							{% endif %}
 						</p>
 						<p>
 							Medidas:
-							<label>Busto: <input type="number" min="40"  max="100"></label>
-							<label>Cintura: <input type="number" min="40" max="100"></label>
-							<label>Cadera: <input type="number" min="40" max="100"></label>
+							<label>Busto: <input name="measure1" type="number" min="40"  max="100" required="required"></label>
+							<label>Cintura: <input name="measure2" type="number" min="40" max="100" required="required"></label>
+							<label>Cadera: <input name="measure3" type="number" min="40" max="100" required="required"></label>
 						</p>
 						<p>
 							<ul class="horizontal-menu">
 								<li>
-									{% if form.rol.errors %}
-									<h6>{{ form.rol.errors }}</h6>	
-									{% endif %}
 									{{ form.rol.label_tag }}:<br>{{ form.rol }}
-									{% if form.rol.message %}
-									<h6>{{ form.rol.message }}</h6>	
-									{% endif %}
 								</li>
 								<li>
-									{% if form.studying.errors %}
-									<h6>{{ form.studying.errors }}</h6>	
-									{% endif %}
 									{{ form.studying.label_tag }}:{{ form.studying }}
-									{% if form.studying.message %}
-									<h6>{{ form.studying.message }}</h6>	
-									{% endif %}
 									<br>
-									{% if form.study_schedule.errors %}
-									<h6>{{ form.study_schedule.errors }}</h6>	
-									{% endif %}
 									{{ form.study_schedule.label_tag }}:<br>{{ form.study_schedule }}
-									{% if form.study_schedule.message %}
-									<h6>{{ form.study_schedule.message }}</h6>	
-									{% endif %}
 								</li>
 							</ul>
 						</p>
 						<p>
-							{% if form.pin.errors %}
-							<h6>{{ form.pin.errors }}</h6>	
-							{% endif %}
 							{{ form.pin.label_tag }}:{{ form.pin }}
-							{% if form.pin.message %}
-							<h6>{{ form.pin.message }}</h6>	
-							{% endif %}
 						</p>
 					</div>
 				</li>
 				<li class="righty">
 					<div class="photos">
+						{% load staticfiles %}
+						<img src="{% static "img/camera.png" %}" alt="Foto 1">
 						Foto 1 | Foto 2
+						<img src="{% static "img/camera.png" %}" alt="Foto 2">
 					</div>
 					<input type="reset">
-					<input type="submit" value="Enviar">
+					<input type="submit" value="Registrar">
+					{% for field in form %}
+						{% if field.errors %}
+							<h6>{{ field.label }}:</h6>
+							<ul class="form-error">
+							{% for error in field.errors %}
+								<li>{{ error }}</li>	
+							{% endfor %}
+							</ul>
+						{% endif %}
+					{% endfor %}
 				</li>
 			</ul>
 		</form>
 	</div>
 </section>
-<script>
-	$( "#id_age" ).datepicker();
-</script>

@@ -35,6 +35,8 @@ input[type=text],input[type=search],input[type=number],input[type=password], sel
 	margin-left 5px
 	height 2.2em
 	font-weight: bold
+select[multiple=multiple]
+	height 3.8em
 h1,h4,h5,h6,label
 	font-family: special_font;
 label
@@ -169,6 +171,16 @@ ul.horizontal-menu
 			col(2/3)
 		li.righty
 			col(1/3)
+			.photos
+				border-color #ff9500
+				margin-bottom 1em
+				img 
+					width 28%
+			ul.form-error
+				list-style disc
+				li
+					float none
+					color #B10000
 	.personal-info, .aditional-info, .photos
 		background-color: #FFF
 		margin-top: 1em
@@ -185,9 +197,7 @@ ul.horizontal-menu
 		border-color #0589ce
 	.aditional-info
 		border-color #3efc39
-	.photos
-		border-color #ff9500
-		margin-bottom 1em
+		
 
 .photo-gallery
 	background: #EB936B url(../img/bg4.jpg) top center no-repeat

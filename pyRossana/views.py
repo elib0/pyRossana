@@ -13,5 +13,6 @@ def home(request):
         num = len(request.user.cart_set.filter(status=models.STATUS_CHOICES[0]))
     return render(request,
                   'index.html',
-                  {'categories': categories, 'products': products, 'num': num, 'form': form},
+                  {'categories': categories, 'products': products,
+                   'num': num, 'form': form},
                   context_instance=RequestContext(request))
