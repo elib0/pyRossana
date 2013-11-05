@@ -2,7 +2,7 @@
 from django import forms
 from django.contrib.admin import widgets
 from django.contrib.auth.models import User
-from persons.models import Promoter
+from persons.models import Promoter, PromoterPhotos
 
 
 class LoginForm(forms.Form):
@@ -69,3 +69,22 @@ class PromoterForm(forms.ModelForm):
                                              'required': 'required'}),
             'pin': forms.TextInput(attrs={'placeholder': 'Ej: 55555'}),
         }
+
+    measure1 = forms.IntegerField(widget=forms.TextInput(attrs={'type': 'number',
+                                  'min': '40', 'max': '100'}),
+                                  max_value=100,
+                                  required=True,
+                                  label='Busto')
+    measure2 = forms.IntegerField(widget=forms.TextInput(attrs={'type': 'number',
+                                  'min': '40', 'max': '100'}),
+                                  max_value=100,
+                                  required=True,
+                                  label='Cintura')
+    measure3 = forms.IntegerField(widget=forms.TextInput(attrs={'type': 'number',
+                                  'min': '40', 'max': '100'}),
+                                  max_value=100,
+                                  required=True,
+                                  label='Cadera')
+
+    photo1 = forms.ImageField(label='Foto 1')
+    photo2 = forms.ImageField(label='Foto 2')

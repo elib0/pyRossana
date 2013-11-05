@@ -28,6 +28,13 @@ NUMBER_CHOICE = (
     (9, '9'),
 )
 
+STATUS_CHOICES = (
+    (1, 'Pendiente'),
+    (2, 'Revisado'),
+    (3, 'Rechazado'),
+    (4, 'Aceptado'),
+)
+
 
 class PromoterType(models.Model):
     def __str__(self):
@@ -47,26 +54,31 @@ class Promoter(models.Model):
     first_name = models.CharField('Nombre', max_length=30)
     last_name = models.CharField('Apellido', max_length=30)
     age = models.DateField('Fecha Nacimiento')
-    mobile_phone = models.CharField('Teléfono móvil', max_length=12)
-    phone = models.CharField('Teléfono habitación', max_length=12, blank=True, null=True)
-    address = models.TextField('Dirección')
+    mobile_phone = models.CharField(u'Teléfono móvil', max_length=12)
+    phone = models.CharField(u'Teléfono habitación', max_length=12, blank=True, null=True)
+    address = models.TextField(u'Dirección')
     marital_status = models.CharField('Estado Civil', max_length=1,
                                       choices=MARITAL_STATUS_CHOICES,
                                       default=MARITAL_STATUS_CHOICES[0])
     height = models.DecimalField('Estatura', max_digits=4, decimal_places=2)
     weight = models.DecimalField('Peso(KG)', max_digits=4, decimal_places=2)
-    measure = models.CommaSeparatedIntegerField(max_length=8)
+    measure = models.CommaSeparatedIntegerField('Medidas', max_length=8,
+                                                blank=True, null=True)
     pin = models.CharField('Blackberry PIN', max_length=8, blank=True, null=True)
     description = models.TextField(blank=True, null=True)
     rol = models.ManyToManyField(PromoterType, verbose_name=u'Tipo de promotor')
     num_children = models.SmallIntegerField('Numero de Hijos',
                                             choices=NUMBER_CHOICE,
                                             default=NUMBER_CHOICE[0])
-    studying = models.BooleanField('¿Estudias?')
+    studying = models.BooleanField(u'¿Estudias?')
     study_schedule = models.SmallIntegerField('Turno de estudio',
                                               max_length=1,
                                               choices=SCHEDULE_CHOICES,
-                                              default=SCHEDULE_CHOICES[0])
+                                              default=SCHEDULE_CHOICES[0],)
+    status = models.IntegerField(max_length=1,
+                                 choices=STATUS_CHOICES,
+                                 default=STATUS_CHOICES[0],
+                                 blank=True)
 
 
 class PromoterPhotos(models.Model):

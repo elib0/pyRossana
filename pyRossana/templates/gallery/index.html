@@ -1,15 +1,42 @@
-<section class="photo-gallery">
-	<div class="page-wrapper">
-		<h1>Galería de Fotos</h1>
-		<div class="photos">
-			{% for picture in gallery.picture_set %}
-			<article>
-		  		{{ picture.title }}
-			</article>
-			{% empty %}
-			<h1>No hay álbum de fotos en este momento</h1>
-			{% endfor %}
-			{{ gallery.name }}
+<div class="page-wrapper">
+	<h1>Galería de Fotos</h1>
+	<div class="photos">
+		{% for picture in album %}
+		<article>
+	  		{{ picture.name }}
+		</article>
+		{% empty %}
+		<h1>No hay álbum de fotos en este momento</h1>
+		{% endfor %}
+		<div class="pagination">
+			<span class="step-links">
+			    {% if album.has_previous %}
+			        <a href="{% url 'gallery:home' %}?page={{ album.previous_page_number }}">previous</a>
+			    {% endif %}
+
+			    <span class="current">
+			        Page {{ album.number }} of {{ album.paginator.num_pages }}.
+			    </span>
+
+			    {% if album.has_next %}
+			        <a href="{% url 'gallery:home' %}?page={{ album.next_page_number }}">next</a>
+			    {% endif %}
+			</span>
 		</div>
 	</div>
-</section>
+</div>
+<script>
+	$('section.photo-gallery .pagination a').click(function(){
+		var that = this;
+		$.ajax({
+			url: that.href,
+			type: 'GET'
+		}).done(function(data) {
+			$( ".content section.photo-gallery" ).html(data);
+		}).fail(function() {
+			console.log("error");
+		});
+		
+		return false;
+	});
+</script>

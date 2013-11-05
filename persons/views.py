@@ -3,9 +3,9 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 import persons.forms as personform
 from django.contrib.auth.models import User
+from persons.models import PromoterPhotos
 from django.utils import simplejson
 from django.http import HttpResponse
-from pyRossana.views import home
 
 
 def loginuser(request):
@@ -61,9 +61,14 @@ def logoutuser(request):
 def registerpromoter(request):
     if request.is_ajax():
         if request.method == 'POST':
-            form = personform.PromoterForm(request.POST)
+            form = personform.PromoterForm(request.POST, request.FILES)
             if form.is_valid():
-                form.save()
+                p = form.save()
+                pp = PromoterPhotos(promoter=p,
+                                    photo1=form.cleaned_data['photo1'],
+                                    photo2=form.cleaned_data['photo2'])
+                pp.save()
         else:
             form = personform.PromoterForm()
-        return render(request, 'persons/register_promoter.html', {'form': form})
+        return render(request, 'persons/register_promoter.html',
+                      {'form': form})

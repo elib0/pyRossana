@@ -17,4 +17,5 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^store/', include('store.urls', namespace="store")),
     url(r'^persons/', include('persons.urls', namespace="person")),
+    url(r'^gallery/', include('gallery.urls', namespace="gallery")),
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

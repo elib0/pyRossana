@@ -1,7 +1,7 @@
 {% load staticfiles %}
 <div class="page-wrapper">
 	<h1>Casting Online</h1>
-	<form action="{% url 'person:promoter' %}" method="POST" id="frmPromoter">{% csrf_token %}
+	<form action="{% url 'person:promoter' %}" method="POST" id="frmPromoter" enctype="multipart/form-data">{% csrf_token %}
 		<ul>
 			<li class="lefty">
 				<div class="personal-info">
@@ -37,9 +37,9 @@
 					</p>
 					<p>
 						Medidas:
-						<label>Busto: <input name="measure1" type="number" min="40"  max="100" required="required"></label>
-						<label>Cintura: <input name="measure2" type="number" min="40" max="100" required="required"></label>
-						<label>Cadera: <input name="measure3" type="number" min="40" max="100" required="required"></label>
+						{{ form.measure1.label_tag }}:{{ form.measure1 }}
+						{{ form.measure2.label_tag }}:{{ form.measure2 }}
+						{{ form.measure3.label_tag }}:{{ form.measure3 }}
 					</p>
 					<p>
 						<ul class="horizontal-menu">
@@ -60,9 +60,16 @@
 			</li>
 			<li class="righty">
 				<div class="photos">
-					<img src="{% static "img/camera.png" %}" alt="Foto 1">
-					Foto 1 | Foto 2
-					<img src="{% static "img/camera.png" %}" alt="Foto 2">
+					<a href="#" title="photo1">
+						<img src="{% static "img/camera.png" %}" alt="Foto 1">
+					 	{{ form.photo1.label }}
+					</a>|
+					<a href="#" title="photo2">
+						{{ form.photo2.label }}
+						<img src="{% static "img/camera.png" %}" alt="Foto 2">
+					</a>
+					{{ form.photo1 }}
+					{{ form.photo2 }}
 				</div>
 				<input type="reset">
 				<input type="submit" value="Registrar">
@@ -81,6 +88,10 @@
 	</form>
 </div>
 <script>
+	$('li.righty div.photos a').click(function(e) {
+		$('#id_'+this.title).click();
+		return false;
+	});
 	$('#frmPromoter').submit(function(){
 		var form = this;
 		$.ajax({
@@ -89,6 +100,8 @@
 			data: $(form).serialize(),
 		}).done(function(data) {
 			$( ".content section.register-promoter" ).html(data);
+		}).fail(function(){
+			showDialog('Error al intentar registrar el Promotor', true);
 		});
 		return false;
 	});
