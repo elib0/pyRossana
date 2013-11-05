@@ -35,9 +35,9 @@
                 Bienvendio:
                 {% if user.is_authenticated %}
                     {% if user.first_name and user.last_name %}
-                        <a href="#">{{ user.last_name }}. {{ user.first_name }}. </a>
+                        <a href="{% url 'person:profile' %}">{{ user.last_name }}. {{ user.first_name }}. </a>
                     {% else %}
-                        <a href="#">{{ user.username }}</a>
+                        <a href="{% url 'person:profile' %}">{{ user.username }}</a>
                     {% endif %}
                 {% else %}
                     Anonimo

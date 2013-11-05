@@ -58,6 +58,10 @@ def logoutuser(request):
     return redirect('home')
 
 
+def profile(request):
+    return render(request, 'persons/profile.html')
+
+
 def registerpromoter(request):
     if request.is_ajax():
         if request.method == 'POST':

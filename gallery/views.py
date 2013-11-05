@@ -31,3 +31,8 @@ def home(request):
             picture = pp.page(pp.num_pages)
 
         return render(request, 'gallery/index.html', {"album": album,'pictures': picture})
+
+
+def ajax_pictures(request):
+    if request.is_ajax():
+        pass
