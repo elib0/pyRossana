@@ -1,29 +1,31 @@
 <div class="page-wrapper">
 	<h1>Galería de Fotos</h1>
 	<div class="photos">
-		{% for picture in album %}
-		<article>
-	  		{{ picture.name }}
-		</article>
+		{% for picture in pictures %}
+		<div class="photo-list">
+			<article>
+	  		{{ picture.title }}
+			</article>
+		</div>
 		{% empty %}
 		<h1>No hay álbum de fotos en este momento</h1>
 		{% endfor %}
+	</div>
+	{% if album %}
 		<div class="pagination">
 			<span class="step-links">
 			    {% if album.has_previous %}
-			        <a href="{% url 'gallery:home' %}?page={{ album.previous_page_number }}">previous</a>
+			        <a href="{% url 'gallery:home' %}?album={{ album.previous_page_number }}">anterior</a>
 			    {% endif %}
-
 			    <span class="current">
-			        Page {{ album.number }} of {{ album.paginator.num_pages }}.
+			        Pagina {{ album.number }} de {{ album.paginator.num_pages }}.
 			    </span>
-
 			    {% if album.has_next %}
-			        <a href="{% url 'gallery:home' %}?page={{ album.next_page_number }}">next</a>
+			        <a href="{% url 'gallery:home' %}?album={{ album.next_page_number }}">siguiente</a>
 			    {% endif %}
 			</span>
 		</div>
-	</div>
+	{% endif %}
 </div>
 <script>
 	$('section.photo-gallery .pagination a').click(function(){
