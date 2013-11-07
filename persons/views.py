@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 import persons.forms as personform
 from django.contrib.auth.models import User
+from store.models import Buyer
 from django.utils import simplejson
 from django.http import HttpResponse
 
@@ -58,16 +59,19 @@ def logoutuser(request):
 
 
 def profile(request):
-    u = request.user
-    user_data = {'first_name': u.first_name,
-                 'last_name': u.last_name, 'email': u.email}
-    # if u.buyer in locals():
-        # pass
+    if request.user.is_authenticated():
+        u = request.user
+        user_data = {'first_name': u.first_name,
+                     'last_name': u.last_name, 'email': u.email}
+        # if u.buyer in locals():
+            # pass
 
-    profileform = personform.ProfileForm(user_data)
-    passform = personform.ChangePasswordForm()
-    return render(request, 'persons/profile.html', {'profileform': profileform,
-                                                    'passform': passform})
+        profileform = personform.ProfileForm(user_data)
+        passform = personform.ChangePasswordForm()
+        return render(request, 'persons/profile.html', {'profileform': profileform,
+                                                        'passform': passform})
+    else:
+        return redirect('persons/login.html')
 
 
 def ajax_change_password(request):
@@ -84,13 +88,16 @@ def ajax_update_profile(request):
             u.first_name = form.cleaned_data['first_name']
             u.last_name = form.cleaned_data['last_name']
             u.email = form.cleaned_data['email']
+            dni = form.cleaned_data['dni']
+            phone = form.cleaned_data['phone']
+            buyer, created = Buyer.objects.get_or_create(user=u, dni=dni, phone=phone)
             try:
-                request.user.save()
+                u.save()
                 result['success'] = 1
                 result['message'] = '¡Se han actualizado sus datos!'
             except:
                 result['success'] = 0
-                result['message'] = 'Ah ocurrido un error al intentar actualizar!'
+                result['message'] = 'Ah ocurrido un error al intentar actualizar sus datos!'
         json = simplejson.dumps(result)
         return HttpResponse(json, mimetype='application/json')
 

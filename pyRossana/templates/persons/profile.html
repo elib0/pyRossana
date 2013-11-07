@@ -11,25 +11,51 @@
 				<li><a href="#tab4">Sistema</a></li>
 			</ul>
 			<div id="tab1">
-				<section class="profile">
-					{% if user %}
-					<h1>Datos personales:</h1>
-					<h6>Estos datos serán usados unicamente para el contacto con usted así como también para la facturación de sus compras.</h6>
-					<article>
-						<form id="frmProfile" action="{% url 'person:save_profile' %}" method="POST">{% csrf_token %}
-							{{ profileform.as_p }}
-							<input type="submit" value="Guardar">
-						</form>
-					</article>
-					{% endif %}
-				</section>
+				<ul>
+					<li class="lefty">
+						<section class="profile-data">
+							{% if user %}
+							<h1>Datos personales:</h1>
+							<h6>Estos datos serán usados unicamente para el contacto con usted así como también para la facturación de sus compras.</h6>
+							<article>
+								<form id="frmProfile" action="{% url 'person:save_profile' %}" method="POST">{% csrf_token %}
+									<p>{{ profileform.dni.label_tag }}:{{ profileform.dni }}</p>
+									<p>
+										{{ profileform.first_name.label_tag }}:{{ profileform.first_name }}
+										{{ profileform.last_name.label_tag }}:{{ profileform.last_name }}
+									</p>
+									<p>{{ profileform.email.label_tag }}:{{ profileform.email }}</p>
+									<p>{{ profileform.phone.label_tag }}:{{ profileform.phone }}</p>
+									<p>{{ profileform.adress.label_tag }}: <br>
+									{{ profileform.adress }}</p>
+									<input type="submit" value="Guardar">
+								</form>
+							</article>
+							{% endif %}
+						</section>
+					</li>
+					<li class="righty">
+						{% for field in form %}
+							{% if field.errors %}
+								<h6 class="error-title">{{ field.label }}:</h6>
+								<ul class="form-error">
+								{% for error in field.errors %}
+									<li>{{ error }}</li>	
+								{% endfor %}
+								</ul>
+							{% endif %}
+						{% endfor %}
+					</li>
+				</ul>
 			</div>
 			<div id="tab2">
-				<h1>Cambiar Contraseña:</h1>
-				<form id="frmPassword" action="#">
-					{{ passform.as_p }}
-					<input type="submit" value="Cambiar">
-				</form>
+				<section class="password">
+					<h1>Cambiar Contraseña:</h1>
+					<form id="frmPassword" action="#">
+						{{ passform.as_p }}
+						<input type="submit" value="Cambiar">
+					</form>
+				</section>
 			</div>
 			<div id="tab3">Compras</div>
 			<div id="tab4">
@@ -47,7 +73,6 @@
 
 	$('#frmProfile').submit(function(){
 		var form = this;
-		console.log('Me pulsaste')
 		$.ajax({
 			url: form.action,
 			type: form.method,
@@ -69,16 +94,9 @@
 						}
 					}];
 			}
-			showDialog(data.message, true, btns);
+			showDialog('No se a podido actualizar tus datos', true, btns);
 		}).fail(function() {
-			btns = [{
-						text: "Volver",
-						click: function() {
-							$( this ).dialog( "close" );
-						}
-					}];
-			showDialog('Error desconocido', true, btns);
-			console.log(data)
+			showDialog('Error desconocido', true);
 		});
 		return false;
 	});
