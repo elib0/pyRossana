@@ -29,10 +29,10 @@ NUMBER_CHOICE = (
 )
 
 STATUS_CHOICES = (
-    (1, 'Pendiente'),
-    (2, 'Revisado'),
-    (3, 'Rechazado'),
-    (4, 'Aceptado'),
+    (0, 'Pendiente'),
+    (1, 'Revisado'),
+    (2, 'Rechazado'),
+    (3, 'Aceptado'),
 )
 
 
@@ -80,5 +80,4 @@ class Promoter(models.Model):
     photo2 = models.ImageField(upload_to="promoter_photos")
     status = models.IntegerField(max_length=1,
                                  choices=STATUS_CHOICES,
-                                 default=STATUS_CHOICES[0],
-                                 blank=True)
+                                 default=STATUS_CHOICES[0],)
