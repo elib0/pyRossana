@@ -108,6 +108,7 @@ def registerpromoter(request):
         if form.is_valid():
             p = form.save()
             p.save()
+            return redirect('home')
     else:
         form = personform.PromoterForm()
     return render(request, 'persons/register_promoter.html',

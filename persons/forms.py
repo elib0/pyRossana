@@ -132,3 +132,4 @@ class PromoterForm(forms.ModelForm):
                                   max_value=100,
                                   required=True,
                                   label='Cadera')
+    status = forms.IntegerField(initial=0, widget=forms.HiddenInput())
