@@ -103,12 +103,24 @@ def ajax_update_profile(request):
 
 
 def registerpromoter(request):
+    if request.method == 'POST':
+        form = personform.PromoterForm(request.POST, request.FILES)
+        if form.is_valid():
+            p = form.save()
+            p.save()
+    else:
+        form = personform.PromoterForm()
+    return render(request, 'persons/register_promoter.html',
+                          {'form': form})
+
+
+def ajax_register_promoter(request):
     if request.is_ajax():
-        if request.method == 'POST':
-            form = personform.PromoterForm(request.POST, request.FILES)
-            if form.is_valid():
-                form.save()
-        else:
-            form = personform.PromoterForm()
-        return render(request, 'persons/register_promoter.html',
-                      {'form': form})
+            if request.method == 'POST':
+                form = personform.PromoterForm(request.POST, request.FILES)
+                if form.is_valid():
+                    form.save()
+            else:
+                form = personform.PromoterForm()
+            return render(request, 'persons/register_promoter.html',
+                          {'form': form})

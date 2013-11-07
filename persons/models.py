@@ -62,8 +62,6 @@ class Promoter(models.Model):
                                       default=MARITAL_STATUS_CHOICES[0])
     height = models.DecimalField('Estatura', max_digits=4, decimal_places=2)
     weight = models.DecimalField('Peso(KG)', max_digits=4, decimal_places=2)
-    measure = models.CommaSeparatedIntegerField('Medidas', max_length=8,
-                                                blank=True, null=True)
     pin = models.CharField('Blackberry PIN', max_length=8, blank=True, null=True)
     description = models.TextField(blank=True, null=True)
     rol = models.ManyToManyField(PromoterType, verbose_name=u'Tipo de promotor')
@@ -75,6 +73,9 @@ class Promoter(models.Model):
                                               max_length=1,
                                               choices=SCHEDULE_CHOICES,
                                               default=SCHEDULE_CHOICES[0],)
+    measure1 = models.IntegerField()
+    measure2 = models.IntegerField()
+    measure3 = models.IntegerField()
     photo1 = models.ImageField(upload_to="promoter_photos")
     photo2 = models.ImageField(upload_to="promoter_photos")
     status = models.IntegerField(max_length=1,
