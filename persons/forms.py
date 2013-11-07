@@ -2,7 +2,7 @@
 from django import forms
 from django.contrib.admin import widgets
 from django.contrib.auth.models import User
-from persons.models import Promoter, PromoterPhotos
+from persons.models import Promoter
 
 
 class LoginForm(forms.Form):
@@ -132,6 +132,3 @@ class PromoterForm(forms.ModelForm):
                                   max_value=100,
                                   required=True,
                                   label='Cadera')
-
-    photo1 = forms.ImageField(label='Foto 1')
-    photo2 = forms.ImageField(label='Foto 2')

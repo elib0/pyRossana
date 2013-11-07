@@ -1,6 +1,7 @@
 <div class="page-wrapper">
 	<h1>Galería de Fotos</h1>
 	<div class="photos">
+	{% if album %}
 		{% for picture in pictures %}
 		<div class="photo-list">
 			<article>
@@ -8,8 +9,11 @@
 			</article>
 		</div>
 		{% empty %}
-		<h1>No hay álbum de fotos en este momento</h1>
+		<h1>No hay fotos en {{ album }}</h1>
 		{% endfor %}
+	{% else %}
+		<h1>No hay álbum de fotos en este momento</h1>
+	{% endif %}
 	</div>
 	{% if album %}
 		<div class="pagination">

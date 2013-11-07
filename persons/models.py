@@ -70,21 +70,14 @@ class Promoter(models.Model):
     num_children = models.SmallIntegerField('Numero de Hijos',
                                             choices=NUMBER_CHOICE,
                                             default=NUMBER_CHOICE[0])
-    studying = models.BooleanField(u'¿Estudias?')
+    studying = models.BooleanField(u'¿Estudias?', blank=True, default=False)
     study_schedule = models.SmallIntegerField('Turno de estudio',
                                               max_length=1,
                                               choices=SCHEDULE_CHOICES,
                                               default=SCHEDULE_CHOICES[0],)
+    photo1 = models.ImageField(upload_to="promoter_photos")
+    photo2 = models.ImageField(upload_to="promoter_photos")
     status = models.IntegerField(max_length=1,
                                  choices=STATUS_CHOICES,
                                  default=STATUS_CHOICES[0],
                                  blank=True)
-
-
-class PromoterPhotos(models.Model):
-    def __str__(self):
-        return self.promoter.first_name
-
-    promoter = models.OneToOneField(Promoter)
-    photo1 = models.ImageField(upload_to="promoter_photos")
-    photo2 = models.ImageField(upload_to="promoter_photos")
