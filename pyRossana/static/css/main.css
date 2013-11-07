@@ -56,12 +56,16 @@ header h6 ~ p{margin-top:-1.25px}
 .ui-widget-header{border:none;color:#000;background:#fff !important}
 .ui-corner-all{border-radius:0}
 .ui-widget-content{background:#fff}
+.ui-widget{font-family:'Open Sans Condensed',sans-serif}
+.ui-state-active,.ui-widget-content .ui-state-active,.ui-widget-header .ui-state-active{border:1px solid #7fc028;background:#fff url("images/ui-bg_glass_65_ffffff_1x400.png") 50% 50% repeat-x;font-weight:bold;color:#7fc028;border-bottom:none}
+.ui-state-hover,.ui-widget-content .ui-state-hover,.ui-widget-header .ui-state-hover,.ui-state-focus,.ui-widget-content .ui-state-focus,.ui-widget-header .ui-state-focus{border:1px solid #7fc028;background:url("images/ui-bg_glass_100_fdf5ce_1x400.png") 50% 50% repeat-x;font-weight:bold;color:#63961f}
+.ui-state-hover a,.ui-state-hover a:hover,.ui-state-hover a:link,.ui-state-hover a:visited{color:#63961f}
 input[type=file]{display:none}
 input[type=button],input[type=reset],input[type=submit]{padding:6px 30px;display:inline-block;background:#7fc028;cursor:pointer;text-align:center;text-decoration:none;transition:200ms ease all;box-shadow:inset 0 1px 0 rgba(255,255,255,0.2);border:1px solid #6dad18;color:#ecf9db;text-shadow:0 1px 0 #5b960c;border:0;background:#7fc028;text-shadow:none;box-shadow:none;font-family:'Open Sans Condensed',sans-serif;font-weight:bold}
 input[type=button]:hover,input[type=reset]:hover,input[type=submit]:hover{color:#f2fae8}
 input[type=button]:active,input[type=reset]:active,input[type=submit]:active{position:relative;top:1px}
 input[type=search]{width:30em;text-align:right}
-input[type=text],input[type=search],input[type=number],input[type=password],select{margin-left:5px;height:2.2em;font-weight:bold}
+input[type=text],input[type=search],input[type=number],input[type=password],input[type=email],select{margin-left:5px;height:2.2em;font-weight:bold}
 select[multiple=multiple]{height:3.8em}
 h1,h4,h5,h6,label{font-family:'Open Sans Condensed',sans-serif}
 label{font-weight:bold}
@@ -75,8 +79,12 @@ section{width:100%;height:100%;padding-top:40px;overflow:hidden;min-height:35em}
 .page-wrapper{width:auto;max-width:1080px;float:none;display:block;margin-right:auto;margin-left:auto;padding-left:15px;padding-right:15px}
 ul.horizontal-menu{list-style:none;}
 ul.horizontal-menu li{float:left}
-.error-title{font-size:12px;font-weight:bold;line-height:0}
+.error-title{font-size:12px;font-weight:bold;line-height:0;margin-top:12px}
 .form-error{font-size:10px}
+.normal-button{padding:6px 30px;display:inline-block;background:#7fc028;cursor:pointer;text-align:center;text-decoration:none;transition:200ms ease all;box-shadow:inset 0 1px 0 rgba(255,255,255,0.2);border:1px solid #6dad18;color:#ecf9db;text-shadow:0 1px 0 #5b960c;border:0;background:#7fc028;text-shadow:none;box-shadow:none;}
+.normal-button:hover{color:#f2fae8}
+.normal-button:active{position:relative;top:1px}
+.profile #tabs + a{float:right}
 .about-us{background:#100604 url("../img/bg1.jpg") center center no-repeat;color:#fff;font-size:14px;}
 .about-us img.logo{margin-left:30%;width:38%}
 .about-us h6{display:inline-block;font-size:2em;color:#fff}
@@ -110,6 +118,7 @@ ul.horizontal-menu li{float:left}
 .register-promoter ul li{float:left;margin:0;padding:0}
 .register-promoter ul li.lefty{float:left;width:65.66666666666666%;margin-left:0%;margin-right:3%;}
 .register-promoter ul li.lefty:last-child{margin-right:0%}
+.register-promoter ul li.lefty .photo-model{width:337px;height:300px;background:url("../img/model.png") no-repeat;position:relative;left:-60px;top:-130px;float:left;background-size:168px}
 .register-promoter ul li.righty{float:left;width:31.33333333333333%;margin-left:0%;margin-right:3%;}
 .register-promoter ul li.righty:last-child{margin-right:0%}
 .register-promoter ul li.righty .photos{border-color:#ff9500;margin-bottom:1em;}

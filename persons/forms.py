@@ -18,6 +18,53 @@ class LoginForm(forms.Form):
                                max_length=30, min_length=6)
 
 
+class ProfileForm(forms.Form):
+    dni = forms.CharField(max_length=9,
+                          min_length=3,
+                          required=True,
+                          label='Cedula',
+                          widget=forms.TextInput(attrs={'placeholder': 'Ej: 18058666',
+                                                        'required': 'required'})
+                          )
+    first_name = forms.CharField(max_length=30, min_length=2,
+                                 label='Nombre',
+                                 widget=forms.TextInput(attrs={'placeholder': 'Carlos',
+                                                        'required': 'required'}))
+    last_name = forms.CharField(max_length=30, min_length=2,
+                                label='Apellido',
+                                widget=forms.TextInput(attrs={'placeholder': 'Gomez',
+                                                              'required': 'required'})
+                                )
+    email = forms.EmailField()
+    phone = forms.CharField(max_length=12,
+                            min_length=11,
+                            label='Teléfono personal',
+                            widget=forms.TextInput(attrs={'placeholder': 'Ej: 0414-4403333','required': 'required'}))
+    adress = forms.CharField(max_length=255, min_length=3,
+                             label='Dirección de facturación',
+                             widget=forms.Textarea(attrs={'placeholder': 'Ej: Naguanagua',
+                                                          'rows': '3'})
+                             )
+
+
+class ChangePasswordForm(forms.Form):
+    old_password = forms.CharField(widget=forms.PasswordInput(
+                                   attrs={'required': 'required'}),
+                                   label='Contraseña Antigua',
+                                   required=True,
+                                   max_length=30, min_length=6)
+    new_password = forms.CharField(widget=forms.PasswordInput(
+                                   attrs={'required': 'required'}),
+                                   label='Contraseña Nueva',
+                                   required=True,
+                                   max_length=30, min_length=6)
+    renew_password = forms.CharField(widget=forms.PasswordInput(
+                                     attrs={'required': 'required'}),
+                                     label='Repita Contraseña Nueva',
+                                     required=True,
+                                     max_length=30, min_length=6)
+
+
 class RegisterForm(forms.ModelForm):
     class Meta:
         model = User
@@ -33,7 +80,8 @@ class RegisterForm(forms.ModelForm):
                                widget=forms.PasswordInput(attrs={'required': 'required'}),
                                label='Contraseña',
                                required=True)
-    repassword = forms.CharField(widget=forms.PasswordInput(attrs={'required': 'required'}),
+    repassword = forms.CharField(widget=forms.PasswordInput(
+                                 attrs={'required': 'required'}),
                                  label='Repite Contraseña',
                                  required=True,
                                  max_length=30, min_length=6)

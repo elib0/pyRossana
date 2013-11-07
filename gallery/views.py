@@ -30,7 +30,8 @@ def home(request):
         except EmptyPage:
             picture = pp.page(pp.num_pages)
 
-        return render(request, 'gallery/index.html', {"album": album,'pictures': picture})
+        return render(request, 'gallery/index.html', {"album": album,
+                      'pictures': picture})
 
 
 def ajax_pictures(request):

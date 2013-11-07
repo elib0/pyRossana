@@ -12,7 +12,8 @@
 special_font = 'Open Sans Condensed', sans-serif;
 
 
-/*Theme*/
+/*Theme Jquery UI*/
+/*Dialog*/
 .ui-widget-header
 	border none
 	color #000
@@ -23,7 +24,22 @@ special_font = 'Open Sans Condensed', sans-serif;
 
 .ui-widget-content
 	background #FFF
-
+/*Tabs*/
+.ui-widget
+	font-family: special_font
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active
+	border: 1px solid green;
+	background: #fff url(images/ui-bg_glass_65_ffffff_1x400.png) 50% 50% repeat-x;
+	font-weight: bold;
+	color: green
+	border-bottom none
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus
+	border: 1px solid green;
+	background: url(images/ui-bg_glass_100_fdf5ce_1x400.png) 50% 50% repeat-x;
+	font-weight: bold;
+	color: darken(#7fc028, 10)
+.ui-state-hover a, .ui-state-hover a:hover, .ui-state-hover a:link, .ui-state-hover a:visited
+	color: darken(#7fc028, 10)
 
 /*General*/
 input[type=file]
@@ -35,7 +51,7 @@ input[type=button],input[type=reset],input[type=submit]
 input[type=search]
 	width: 30em
 	text-align: right
-input[type=text],input[type=search],input[type=number],input[type=password], select
+input[type=text],input[type=search],input[type=number],input[type=password],input[type=email],select
 	margin-left 5px
 	height 2.2em
 	font-weight: bold
@@ -89,9 +105,14 @@ ul.horizontal-menu
 	margin-top: 12px;
 .form-error
 	font-size 10px
+.normal-button
+	btn(green)
 
 
 /*Secciones de la pagina*/
+.profile
+	#tabs + a
+		float: right
 .about-us
 	background: #100604 url(../img/bg1.jpg) center center no-repeat
 	color: #FFF
@@ -182,6 +203,16 @@ ul.horizontal-menu
 			padding 0
 		li.lefty
 			col(2/3)
+			.photo-model
+				width 337px
+				height 300px
+				background: url(../img/model.png) no-repeat
+				position: relative;
+				left: -60px;
+				top: -130px;
+				float: left;
+				background-size: 168px;
+
 		li.righty
 			col(1/3)
 			.photos

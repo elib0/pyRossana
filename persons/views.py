@@ -59,7 +59,20 @@ def logoutuser(request):
 
 
 def profile(request):
-    return render(request, 'persons/profile.html')
+    profileform = personform.ProfileForm()
+    passform = personform.ChangePasswordForm()
+    return render(request, 'persons/profile.html', {'profileform': profileform,
+                                                    'passform': passform})
+
+
+def ajax_change_password(request):
+    if request.is_ajax():
+        pass
+
+
+def ajax_update_profile(request):
+    if request.is_ajax():
+        pass
 
 
 def registerpromoter(request):
