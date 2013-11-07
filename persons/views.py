@@ -45,8 +45,8 @@ def registeruser(request):
             except:
                 result['success'] = 0
                 result['message'] = 'Ah ocurrido un error al intentar crear el usuario!'
-            json = simplejson.dumps(result)
-            return HttpResponse(json, mimetype='application/json')
+        json = simplejson.dumps(result)
+        return HttpResponse(json, mimetype='application/json')
     else:
         form = personform.RegisterForm()
     return render(request, 'persons/register.html', {'form': form})
@@ -59,7 +59,13 @@ def logoutuser(request):
 
 
 def profile(request):
-    profileform = personform.ProfileForm()
+    u = request.user
+    user_data = {'first_name': u.first_name,
+                 'last_name': u.last_name, 'email': u.email}
+    # if u.buyer in locals():
+        # pass
+
+    profileform = personform.ProfileForm(user_data)
     passform = personform.ChangePasswordForm()
     return render(request, 'persons/profile.html', {'profileform': profileform,
                                                     'passform': passform})
@@ -71,8 +77,23 @@ def ajax_change_password(request):
 
 
 def ajax_update_profile(request):
-    if request.is_ajax():
-        pass
+    if request.is_ajax() and request.method == 'POST':
+        result = {'success': -1, 'message': 'Error desconocido'}
+        form = personform.ProfileForm(request.POST)
+        u = request.user
+        if form.is_valid():
+            u.first_name = form.cleaned_data['first_name']
+            u.last_name = form.cleaned_data['last_name']
+            u.email = form.cleaned_data['email']
+            try:
+                request.user.save()
+                result['success'] = 1
+                result['message'] = '¡Se han actualizado sus datos!'
+            except:
+                result['success'] = 0
+                result['message'] = 'Ah ocurrido un error al intentar actualizar!'
+        json = simplejson.dumps(result)
+        return HttpResponse(json, mimetype='application/json')
 
 
 def registerpromoter(request):

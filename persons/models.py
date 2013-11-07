@@ -46,7 +46,7 @@ class PromoterType(models.Model):
 
 class Promoter(models.Model):
     def __str__(self):
-        self.user.name
+        return self.first_name
 
     ci = models.PositiveIntegerField('Cedula',
                                      unique=True,
@@ -83,7 +83,7 @@ class Promoter(models.Model):
 
 class PromoterPhotos(models.Model):
     def __str__(self):
-        self.promoter.user.username
+        return self.promoter.first_name
 
     promoter = models.OneToOneField(Promoter)
     photo1 = models.ImageField(upload_to="promoter_photos")

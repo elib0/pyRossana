@@ -7,4 +7,6 @@ urlpatterns = patterns('',
     url(r'^promoter/', views.registerpromoter, name='promoter'),
     url(r'^logout/', views.logoutuser, name='logout'),
     url(r'^profile/', views.profile, name='profile'),
+    url(r'^profile/save', views.ajax_update_profile, name='save_profile'),
+
 )

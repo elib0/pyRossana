@@ -16,10 +16,9 @@
 					<h1>Datos personales:</h1>
 					<h6>Estos datos serán usados unicamente para el contacto con usted así como también para la facturación de sus compras.</h6>
 					<article>
-						<form id="frmPerfil" action="#" method="POST">{% csrf_token %}
+						<form id="frmProfile" action="{% url 'person:save_profile' %}" method="POST">{% csrf_token %}
 							{{ profileform.as_p }}
 							<input type="submit" value="Guardar">
-							<input type="button" id="btnVolver" name="btnVolver" value="Volver">
 						</form>
 					</article>
 					{% endif %}
@@ -27,7 +26,7 @@
 			</div>
 			<div id="tab2">
 				<h1>Cambiar Contraseña:</h1>
-				<form action="#">
+				<form id="frmPassword" action="#">
 					{{ passform.as_p }}
 					<input type="submit" value="Cambiar">
 				</form>
@@ -45,5 +44,43 @@
 {% block js %}
 <script>
 	$('#tabs').tabs();
+
+	$('#frmProfile').submit(function(){
+		var form = this;
+		console.log('Me pulsaste')
+		$.ajax({
+			url: form.action,
+			type: form.method,
+			data: $(form).serialize(),
+		}).done(function(data) {
+			if (data.success == 1) {
+				btns = [{
+						text: "Aceptar",
+						click: function() {
+							$( this ).dialog( "close" );
+							window.location = '{% url 'person:login' %}';
+						}
+					}];
+			}else{
+				btns = [{
+						text: "Aceptar",
+						click: function() {
+							$( this ).dialog( "close" );
+						}
+					}];
+			}
+			showDialog(data.message, true, btns);
+		}).fail(function() {
+			btns = [{
+						text: "Volver",
+						click: function() {
+							$( this ).dialog( "close" );
+						}
+					}];
+			showDialog('Error desconocido', true, btns);
+			console.log(data)
+		});
+		return false;
+	});
 </script>
 {% endblock js %}

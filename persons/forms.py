@@ -40,8 +40,7 @@ class ProfileForm(forms.Form):
                             min_length=11,
                             label='Teléfono personal',
                             widget=forms.TextInput(attrs={'placeholder': 'Ej: 0414-4403333','required': 'required'}))
-    adress = forms.CharField(max_length=255, min_length=3,
-                             label='Dirección de facturación',
+    adress = forms.CharField(label='Dirección de facturación',
                              widget=forms.Textarea(attrs={'placeholder': 'Ej: Naguanagua',
                                                           'rows': '3'})
                              )
