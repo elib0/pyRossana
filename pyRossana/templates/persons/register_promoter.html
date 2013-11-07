@@ -94,17 +94,30 @@
 		$('#id_'+this.title).click();
 		return false;
 	});
+
 	$('#frmPromoter').submit(function(){
-		var form = this;
-		$.ajax({
-			url: form.action,
-			type: form.method,
-			data: $(form).serialize(),
-		}).done(function(data) {
-			$( ".content section.register-promoter" ).html(data);
-		}).fail(function(){
-			showDialog('Error al intentar registrar el Promotor', true);
-		});
+		var that = this;
+		var option = {
+			url: that.action,
+			success: function(data){
+				$( ".content section.register-promoter" ).html(data);
+			} 
+		}
+		$(this).ajaxForm(option);
 		return false;
-	});
+	}); 
+
+	// $('#frmPromoter').submit(function(){
+	// 	var form = this;
+	// 	$.ajax({
+	// 		url: form.action,
+	// 		type: form.method,
+	// 		data: $(form).serialize(),
+	// 	}).done(function(data) {
+	// 		$( ".content section.register-promoter" ).html(data);
+	// 	}).fail(function(){
+	// 		showDialog('Error al intentar registrar el Promotor', true);
+	// 	});
+	// 	return false;
+	// });
 </script>
