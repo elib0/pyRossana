@@ -1,46 +1,77 @@
 <div class="page-wrapper">
 	<h1>Galería de Fotos</h1>
-	<div class="photos">
-	{% if album %}
-		{% for picture in pictures %}
-		<div class="photo-list">
-			<article>
-	  		{{ picture.title }}
-			</article>
-		</div>
-		{% empty %}
-		<h1>No hay fotos en {{ album }}</h1>
+	<div class="albums">
+	{% if albums %}
+		{% for album in albums %}
+		<article>
+		    <a href="{% url 'gallery:album' album.id %}">
+		    	<header>
+		    	    <h1>{{ album.name }}</h1>
+		    	</header>
+		    	{% for img in album.picture_set.all %}
+		    		{% if forloop.first %}
+		    		<img src="{{ MEDIA_URL }}{{ img.picture }}" alt="{{ album.name }}"><br>
+		    		{% endif %}
+		    	{% endfor %}	
+		    </a>
+		</article>
 		{% endfor %}
 	{% else %}
 		<h1>No hay álbum de fotos en este momento</h1>
 	{% endif %}
 	</div>
-	{% if album %}
-		<div class="pagination">
+	{% if albums %}
+		<footer class="pagination">
 			<span class="step-links">
-			    {% if album.has_previous %}
-			        <a href="{% url 'gallery:home' %}?album={{ album.previous_page_number }}">anterior</a>
+			    {% if albums.has_previous %}
+			        <a class="previous-page" href="{% url 'gallery:home' %}?page={{ albums.previous_page_number }}">anterior</a>
 			    {% endif %}
 			    <span class="current">
-			        Pagina {{ album.number }} de {{ album.paginator.num_pages }}.
+			        Pagina {{ albums.number }} de {{ albums.paginator.num_pages }}.
 			    </span>
-			    {% if album.has_next %}
-			        <a href="{% url 'gallery:home' %}?album={{ album.next_page_number }}">siguiente</a>
+			    {% if albums.has_next %}
+			        <a class="next-page" href="{% url 'gallery:home' %}?page={{ albums.next_page_number }}">siguiente</a>
 			    {% endif %}
 			</span>
-		</div>
+		</footer>
 	{% endif %}
 </div>
 <script>
-	$('section.photo-gallery .pagination a').click(function(){
+	//Carga Album especifico
+	$('.albums article > a').click(function(){
 		var that = this;
+		console.log(that.href);
 		$.ajax({
 			url: that.href,
-			type: 'GET'
-		}).done(function(data) {
-			$( ".content section.photo-gallery" ).html(data);
-		}).fail(function() {
-			console.log("error");
+			type: 'GET',
+			success: function(data){
+				$( "section.photo-gallery page-wrapper" ).html(data);
+			}
+		});
+		
+		return false;
+	});
+	
+	//Paginador
+	$('section.photo-gallery .pagination a').click(function(){
+		var that = this;
+		// var direction = '-=';
+		// if($(that).attr('class') == 'previous-page') direction = '+=';
+
+		$.ajax({
+			url: that.href,
+			type: 'GET',
+			success: function(data){
+				$('.albums').show('slide', { direction: "left" }, 2000, function(){
+					$( ".content section.photo-gallery" ).html(data);
+				});
+				// $('.albums').css('position', 'absolute').animate({
+				// 	'left': direction+$( document ).width(),
+				// 	'width': '300px'
+				// }, 2000, function(){
+				// 	$( ".content section.photo-gallery" ).html(data);
+				// });
+			}
 		});
 		
 		return false;

@@ -1,0 +1,33 @@
+{% if pictures %}
+<div class="album">
+	<h1>{{ album_title }}</h1>
+	{% for picture in pictures %}
+	<article>
+	    <a href="#">
+	    	<header>
+	    	    <h1>{{ picture.title }}</h1>
+	    	</header>
+	    	<img src="{{ MEDIA_URL }}{{ picture.picture }}" alt="{{ picture.title }}"><br>
+	    </a>
+	</article>
+	{% endfor %}
+</div>
+{% else %}
+	<h1>No hay fotos en este álbum</h1>
+{% endif %}
+
+{% if pictures %}
+	<footer class="pagination">
+		<span class="step-links">
+		    {% if pictures.has_previous %}
+		        <a class="previous-page" href="{% url 'gallery:home' %}?page={{ pictures.previous_page_number }}">anterior</a>
+		    {% endif %}
+		    <span class="current">
+		        Pagina {{ pictures.number }} de {{ pictures.paginator.num_pages }}.
+		    </span>
+		    {% if pictures.has_next %}
+		        <a class="next-page" href="{% url 'gallery:home' %}?page={{ pictures.next_page_number }}">siguiente</a>
+		    {% endif %}
+		</span>
+	</footer>
+{% endif %}
